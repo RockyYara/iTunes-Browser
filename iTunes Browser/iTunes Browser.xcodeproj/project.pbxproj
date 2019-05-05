@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D81F90C8227B7DA60036DC5D /* OnlineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */; };
+		D81F90D4227F01680036DC5D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D3227F01680036DC5D /* Item.swift */; };
+		D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D5227F03920036DC5D /* OnlineDataManager.swift */; };
+		D81F90D9227F1F6C0036DC5D /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D8227F1F6C0036DC5D /* APIHelper.swift */; };
+		D81F90DB227F1F7A0036DC5D /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90DA227F1F790036DC5D /* ModelParser.swift */; };
+		D81F90DE227F29C10036DC5D /* String+PercentEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90DD227F29C10036DC5D /* String+PercentEncoding.swift */; };
 		D81F910E227F29C50036DC5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F910D227F29C50036DC5D /* AppDelegate.swift */; };
-		D81F9110227F29C50036DC5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F910F227F29C50036DC5D /* ViewController.swift */; };
 		D81F9113227F29C50036DC5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81F9111227F29C50036DC5D /* Main.storyboard */; };
 		D81F9116227F29C50036DC5D /* iTunes_Browser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D81F9114227F29C50036DC5D /* iTunes_Browser.xcdatamodeld */; };
 		D81F9118227F29C50036DC5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81F9117227F29C50036DC5D /* Assets.xcassets */; };
@@ -16,9 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineItemsViewController.swift; sourceTree = "<group>"; };
+		D81F90D3227F01680036DC5D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D81F90D5227F03920036DC5D /* OnlineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataManager.swift; sourceTree = "<group>"; };
+		D81F90D8227F1F6C0036DC5D /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		D81F90DA227F1F790036DC5D /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
+		D81F90DD227F29C10036DC5D /* String+PercentEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+PercentEncoding.swift"; sourceTree = "<group>"; };
 		D81F910A227F29C50036DC5D /* iTunes Browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iTunes Browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81F910D227F29C50036DC5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D81F910F227F29C50036DC5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D81F9112227F29C50036DC5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D81F9115227F29C50036DC5D /* iTunes_Browser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTunes_Browser.xcdatamodel; sourceTree = "<group>"; };
 		D81F9117227F29C50036DC5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,6 +47,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D81F90C9227B7EB10036DC5D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D81F90CE227F00C90036DC5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D81F90D3227F01680036DC5D /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D81F90D7227F03970036DC5D /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				D81F90D5227F03920036DC5D /* OnlineDataManager.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		D81F90DC227F1F840036DC5D /* Network Communication */ = {
+			isa = PBXGroup;
+			children = (
+				D81F90D8227F1F6C0036DC5D /* APIHelper.swift */,
+				D81F90DA227F1F790036DC5D /* ModelParser.swift */,
+			);
+			path = "Network Communication";
+			sourceTree = "<group>";
+		};
+		D81F90DF227F29C50036DC5D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D81F90DD227F29C10036DC5D /* String+PercentEncoding.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D81F9101227F29C50036DC5D = {
 			isa = PBXGroup;
 			children = (
@@ -56,8 +107,12 @@
 		D81F910C227F29C50036DC5D /* iTunes Browser */ = {
 			isa = PBXGroup;
 			children = (
+				D81F90CE227F00C90036DC5D /* Model */,
+				D81F90D7227F03970036DC5D /* Logic */,
+				D81F90DC227F1F840036DC5D /* Network Communication */,
+				D81F90DF227F29C50036DC5D /* Extensions */,
+				D81F90C9227B7EB10036DC5D /* View Controllers */,
 				D81F910D227F29C50036DC5D /* AppDelegate.swift */,
-				D81F910F227F29C50036DC5D /* ViewController.swift */,
 				D81F9111227F29C50036DC5D /* Main.storyboard */,
 				D81F9117227F29C50036DC5D /* Assets.xcassets */,
 				D81F9119227F29C50036DC5D /* LaunchScreen.storyboard */,
@@ -138,9 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81F9110227F29C50036DC5D /* ViewController.swift in Sources */,
 				D81F9116227F29C50036DC5D /* iTunes_Browser.xcdatamodeld in Sources */,
 				D81F910E227F29C50036DC5D /* AppDelegate.swift in Sources */,
+				D81F90D9227F1F6C0036DC5D /* APIHelper.swift in Sources */,
+				D81F90DE227F29C10036DC5D /* String+PercentEncoding.swift in Sources */,
+				D81F90D4227F01680036DC5D /* Item.swift in Sources */,
+				D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */,
+				D81F90C8227B7DA60036DC5D /* OnlineItemsViewController.swift in Sources */,
+				D81F90DB227F1F7A0036DC5D /* ModelParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +353,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yaroslavsverdlikov.iTunes-Browser";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaroslavsverdlikov.iTunesBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,7 +371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yaroslavsverdlikov.iTunes-Browser";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yaroslavsverdlikov.iTunesBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
