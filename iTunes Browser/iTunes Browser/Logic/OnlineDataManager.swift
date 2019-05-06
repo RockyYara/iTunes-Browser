@@ -16,14 +16,9 @@ class OnlineDataManager {
     private let modelParser = ModelParser()
     
     private(set) var items = [Item]()
-    
-    private init() {
-        // Temporarily for test purposes.
-        test_fillItemsArrayWithTestData()
-    }
-    
-    func refreshMusicItems(withSearchString searchString: String, completionHandler: @escaping (Bool) -> Void) {
-        apiHelper.searchItems(ofType: "music", withSearchString: searchString) { [weak self] resultDict in
+
+    func refreshItems(ofType type: ItemType, withSearchString searchString: String, completionHandler: @escaping (Bool) -> Void) {
+        apiHelper.searchItems(ofType: type.rawValue, withSearchString: searchString) { [weak self] resultDict in
             guard let dict = resultDict else {
                 completionHandler(false)
                 return
@@ -42,12 +37,4 @@ class OnlineDataManager {
             }
         }
     }
-    
-    // Temporarily for test purposes.
-    private func test_fillItemsArrayWithTestData() {
-        for i in 1...5 {
-            items.append(Item.init(trackId: i, trackName: "Track \(i)", artistName: "Artist \(i)", artworkUrl60: nil))
-        }
-    }
-    
 }

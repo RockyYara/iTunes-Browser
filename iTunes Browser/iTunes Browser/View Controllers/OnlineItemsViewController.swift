@@ -12,9 +12,14 @@ class OnlineItemsViewController: UIViewController {
     
     // MARK: - Constants
     
+    private let lastOpenedItemsTypeInModeKeyName = "LastOpenedItemsTypeInMode"
+    private let viewControllerForMode = "Online"
+    
     private let cellReuseIdentifier = "cellReuseId"
     
     // MARK: - Outlets
+    
+    @IBOutlet private weak var typeSegmentedControl: UISegmentedControl!
     
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
@@ -25,37 +30,83 @@ class OnlineItemsViewController: UIViewController {
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: - Private variables
+    
+    private var currentItemType: ItemType? {
+        didSet {
+            UserDefaults.standard.setValue(currentItemType?.rawValue, forKey: lastOpenedItemsTypeInModeKeyName + viewControllerForMode)
+        }
+    }
+    
     // MARK: - View life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Temporarily for test purposes.
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        setUpCurrentItemType()
+        setUpTypeSegmentedControl()
         
         // Temporarily for test purposes.
-        let deadlineTime = DispatchTime.now() + .seconds(2)
-        DispatchQueue.main.asyncAfter(deadline: deadlineTime) { [weak self] in
-            self?.activityIndicator.startAnimating()
-            
-            OnlineDataManager.sharedInstance.refreshMusicItems(withSearchString: "It's my life") { success in
-                DispatchQueue.main.async {
-                    if success {
-                        self?.tableView.reloadData()
-                    } else {
-                        let alertController = UIAlertController(title: "Error", message: "There was an error while updating items.", preferredStyle: .alert)
-                        let alertAction = UIAlertAction(title: "OK", style: .default)
-                        alertController.addAction(alertAction)
-                        
-                        self?.present(alertController, animated: true)
-                    }
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+
+        refreshItems()
+    }
+    
+    // MARK: - Actions
+
+    @IBAction private func typeSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        currentItemType = ItemType.allCases[sender.selectedSegmentIndex]
+        refreshItems()
+    }
+    
+    // MARK: - Internal
+    
+    private func setUpCurrentItemType() {
+        if let lastItemTypeString = UserDefaults.standard.string(forKey: lastOpenedItemsTypeInModeKeyName + viewControllerForMode), let lastItemType = ItemType(rawValue: lastItemTypeString) {
+            currentItemType = lastItemType
+        } else {
+            currentItemType = ItemType.allCases.first
+        }
+    }
+    
+    private func setUpTypeSegmentedControl() {
+        typeSegmentedControl.removeAllSegments()
+        
+        for type in ItemType.allCases {
+            typeSegmentedControl.insertSegment(withTitle: type.rawValue.capitalized, at: typeSegmentedControl.numberOfSegments, animated: false)
+        }
+        
+        guard let itemType = currentItemType else {
+            fatalError("currentItemType is nil in setUpTypeSegmentedControl() !")
+        }
+        
+        guard let indexOfCurrentItemType = ItemType.allCases.firstIndex(of: itemType) else {
+            fatalError("currentItemType not found in ItemType.allCases !")
+        }
+        
+        typeSegmentedControl.selectedSegmentIndex = indexOfCurrentItemType
+    }
+    
+    private func refreshItems() {
+        guard let itemType = currentItemType else {
+            fatalError("currentItemType is nil in setUpTypeSegmentedControl() !")
+        }
+
+        activityIndicator.startAnimating()
+        
+        OnlineDataManager.sharedInstance.refreshItems(ofType: itemType, withSearchString: itemType.defaultSearchString()) { success in
+            DispatchQueue.main.async { [weak self] in
+                if success {
+                    self?.tableView.reloadData()
+                } else {
+                    let alertController = UIAlertController(title: "Error", message: "There was an error while updating items.", preferredStyle: .alert)
+                    let alertAction = UIAlertAction(title: "OK", style: .default)
+                    alertController.addAction(alertAction)
                     
-                    self?.activityIndicator.stopAnimating()
+                    self?.present(alertController, animated: true)
                 }
+                
+                self?.activityIndicator.stopAnimating()
             }
         }
     }

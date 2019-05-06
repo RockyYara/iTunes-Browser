@@ -18,6 +18,7 @@
 		D81F9116227F29C50036DC5D /* iTunes_Browser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D81F9114227F29C50036DC5D /* iTunes_Browser.xcdatamodeld */; };
 		D81F9118227F29C50036DC5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81F9117227F29C50036DC5D /* Assets.xcassets */; };
 		D81F911B227F29C50036DC5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81F9119227F29C50036DC5D /* LaunchScreen.storyboard */; };
+		D81F9138228087050036DC5D /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F9137228087050036DC5D /* ItemType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D81F9117227F29C50036DC5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81F911A227F29C50036DC5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D81F911C227F29C50036DC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D81F9137228087050036DC5D /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		D81F90CE227F00C90036DC5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D81F9137228087050036DC5D /* ItemType.swift */,
 				D81F90D3227F01680036DC5D /* Item.swift */,
 			);
 			path = Model;
@@ -195,6 +198,7 @@
 			files = (
 				D81F9116227F29C50036DC5D /* iTunes_Browser.xcdatamodeld in Sources */,
 				D81F910E227F29C50036DC5D /* AppDelegate.swift in Sources */,
+				D81F9138228087050036DC5D /* ItemType.swift in Sources */,
 				D81F90D9227F1F6C0036DC5D /* APIHelper.swift in Sources */,
 				D81F90DE227F29C10036DC5D /* String+PercentEncoding.swift in Sources */,
 				D81F90D4227F01680036DC5D /* Item.swift in Sources */,
