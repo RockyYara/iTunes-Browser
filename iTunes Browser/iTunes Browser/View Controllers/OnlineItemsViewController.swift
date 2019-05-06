@@ -21,6 +21,8 @@ class OnlineItemsViewController: UIViewController {
     
     @IBOutlet private weak var typeSegmentedControl: UISegmentedControl!
     
+    @IBOutlet private weak var searchBar: UISearchBar!
+    
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
@@ -35,6 +37,14 @@ class OnlineItemsViewController: UIViewController {
     private var currentItemType: ItemType? {
         didSet {
             UserDefaults.standard.setValue(currentItemType?.rawValue, forKey: lastOpenedItemsTypeInModeKeyName + viewControllerForMode)
+        }
+    }
+    
+    private var currentSearchString: String? {
+        didSet {
+            if currentSearchString == "" {
+                currentSearchString = nil
+            }
         }
     }
     
@@ -57,6 +67,12 @@ class OnlineItemsViewController: UIViewController {
     @IBAction private func typeSegmentedControlValueChanged(_ sender: UISegmentedControl) {
         currentItemType = ItemType.allCases[sender.selectedSegmentIndex]
         refreshItems()
+    }
+    
+    @IBAction func tableViewTapped() {
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+        }
     }
     
     // MARK: - Internal
@@ -94,10 +110,16 @@ class OnlineItemsViewController: UIViewController {
 
         activityIndicator.startAnimating()
         
-        OnlineDataManager.sharedInstance.refreshItems(ofType: itemType, withSearchString: itemType.defaultSearchString()) { success in
+        let searchString = currentSearchString ?? itemType.defaultSearchString()
+        
+        OnlineDataManager.sharedInstance.refreshItems(ofType: itemType, withSearchString: searchString) { success in
             DispatchQueue.main.async { [weak self] in
                 if success {
                     self?.tableView.reloadData()
+                    
+                    if OnlineDataManager.sharedInstance.items.count > 0 {
+                        self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                    }
                 } else {
                     let alertController = UIAlertController(title: "Error", message: "There was an error while updating items.", preferredStyle: .alert)
                     let alertAction = UIAlertAction(title: "OK", style: .default)
@@ -135,5 +157,32 @@ extension OnlineItemsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension OnlineItemsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension OnlineItemsViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+        }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension OnlineItemsViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        searchBar.text = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if let trimmedSearchBarText = searchBar.text {
+            currentSearchString = trimmedSearchBarText
+            refreshItems()
+        }
+    }
 }

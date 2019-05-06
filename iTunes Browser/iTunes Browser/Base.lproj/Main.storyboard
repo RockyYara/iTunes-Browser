@@ -28,34 +28,55 @@
                                     <action selector="typeSegmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Yiw-b2-TRC"/>
                                 </connections>
                             </segmentedControl>
+                            <searchBar contentMode="redraw" placeholder="Type here to search..." translatesAutoresizingMaskIntoConstraints="NO" id="uKy-Tw-7gG">
+                                <rect key="frame" x="0.0" y="83" width="375" height="56"/>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="oph-Od-GGW"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-4l-pW6">
-                                <rect key="frame" x="0.0" y="83" width="375" height="584"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="BpU-iC-e2p" appends="YES" id="1rn-IP-dvT"/>
+                                </connections>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-gn-ysm">
-                                <rect key="frame" x="177.5" y="365" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="393" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="IDT-4l-pW6" firstAttribute="top" secondItem="uKy-Tw-7gG" secondAttribute="bottom" id="4pP-cz-iVL"/>
                             <constraint firstItem="9ep-5P-xqN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6qm-wd-mIX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IDT-4l-pW6" secondAttribute="trailing" id="7Wr-Fj-YfF"/>
                             <constraint firstItem="IDT-4l-pW6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BCb-DH-Ixu"/>
-                            <constraint firstItem="IDT-4l-pW6" firstAttribute="top" secondItem="9ep-5P-xqN" secondAttribute="bottom" constant="16" id="DVo-af-a98"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IDT-4l-pW6" secondAttribute="bottom" id="HII-5F-D5r"/>
+                            <constraint firstItem="uKy-Tw-7gG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tvq-XD-pjC"/>
                             <constraint firstItem="9ep-5P-xqN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="19" id="fIp-nv-hit"/>
+                            <constraint firstItem="uKy-Tw-7gG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lvg-bL-IM7"/>
+                            <constraint firstItem="uKy-Tw-7gG" firstAttribute="top" secondItem="9ep-5P-xqN" secondAttribute="bottom" constant="16" id="pgx-gu-7Dg"/>
                             <constraint firstItem="ppa-gn-ysm" firstAttribute="centerY" secondItem="IDT-4l-pW6" secondAttribute="centerY" id="spc-D6-mpI"/>
                             <constraint firstItem="ppa-gn-ysm" firstAttribute="centerX" secondItem="IDT-4l-pW6" secondAttribute="centerX" id="t0y-Yj-8I2"/>
+                            <constraint firstItem="uKy-Tw-7gG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="u1W-bP-6ds"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="ppa-gn-ysm" id="IP0-aS-rYN"/>
+                        <outlet property="searchBar" destination="uKy-Tw-7gG" id="wJe-8s-68V"/>
                         <outlet property="tableView" destination="IDT-4l-pW6" id="P8X-Aj-i5I"/>
                         <outlet property="typeSegmentedControl" destination="9ep-5P-xqN" id="qKz-ol-ykw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="BpU-iC-e2p">
+                    <connections>
+                        <action selector="tableViewTapped" destination="BYZ-38-t0r" id="PnH-Xp-43a"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
