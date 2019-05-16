@@ -136,7 +136,7 @@ class OnlineItemsViewController: UIViewController {
         
         let searchString = currentSearchString ?? itemType.defaultSearchString()
         
-        OnlineDataManager.sharedInstance.refreshItems(ofType: itemType, withSearchString: searchString) { success in
+        OnlineDataManager.sharedInstance.refreshItems(of: itemType, with: searchString) { success in
             DispatchQueue.main.async { [weak self] in
                 if success {
                     self?.tableView.reloadData()
@@ -194,6 +194,23 @@ extension OnlineItemsViewController: UITableViewDataSource {
 extension OnlineItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let saveAction = UIContextualAction(style: .normal, title: "Save") { (action, sourceView, handler) in
+            let item = OnlineDataManager.sharedInstance.items[indexPath.row]
+            OfflineDataManager.sharedInstance.saveOrUpdateItem(item)
+            
+            handler(true)
+        }
+
+        saveAction.backgroundColor = view.tintColor
+
+        return UISwipeActionsConfiguration(actions: [saveAction])
     }
 }
 

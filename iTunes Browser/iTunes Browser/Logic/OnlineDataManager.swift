@@ -17,8 +17,8 @@ class OnlineDataManager {
     
     private(set) var items = [Item]()
 
-    func refreshItems(ofType type: ItemType, withSearchString searchString: String, completionHandler: @escaping (Bool) -> Void) {
-        apiHelper.searchItems(ofType: type.rawValue, withSearchString: searchString) { [weak self] resultDict in
+    func refreshItems(of type: ItemType, with searchString: String, completionHandler: @escaping (Bool) -> Void) {
+        apiHelper.searchItems(of: type.rawValue, with: searchString) { [weak self] resultDict in
             guard let dict = resultDict else {
                 completionHandler(false)
                 return
@@ -30,7 +30,8 @@ class OnlineDataManager {
             }
             
             if let strongSelf = self {
-                strongSelf.items = strongSelf.modelParser.parseArrayOfItemsFromJson(jsonArray: resultsArray)
+                strongSelf.items = strongSelf.modelParser.parseArrayOfItems(of: type, from: resultsArray)
+                // Here we supply ModelParser with the information about type of items because we definitely know the type of items we are currently requesting.
                 completionHandler(true)
             } else {
                 completionHandler(false)

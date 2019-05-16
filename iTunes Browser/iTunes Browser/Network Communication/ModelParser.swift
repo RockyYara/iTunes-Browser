@@ -10,12 +10,14 @@ import Foundation
 
 class ModelParser {
     
-    func parseArrayOfItemsFromJson(jsonArray: [Any]) -> [Item] {
+    // The caller supplies ModelParser with the information about type of items to parse because it definitely knows the type of items to parse.
+
+    func parseArrayOfItems(of type: ItemType, from jsonArray: [Any]) -> [Item] {
         var arrayOfItems = [Item]()
         
         if let itemsJsonArray = jsonArray as? [[String : Any]] {
             for itemJsonDictionary in itemsJsonArray {
-                if let item = parseItemFromJson(jsonDict: itemJsonDictionary) {
+                if let item = parseItem(of: type, from: itemJsonDictionary) {
                     arrayOfItems.append(item)
                 }
             }
@@ -24,11 +26,11 @@ class ModelParser {
         return arrayOfItems
     }
     
-    private func parseItemFromJson(jsonDict: [String : Any]) -> Item? {
+    private func parseItem(of type: ItemType, from jsonDict: [String : Any]) -> Item? {
         if let trackId = jsonDict["trackId"] as? Int, let trackName = jsonDict["trackName"] as? String, let artistName = jsonDict["artistName"] as? String {
             let artworkUrl60 = jsonDict["artworkUrl60"] as? String
             
-            return Item(trackId: trackId, trackName: trackName, artistName: artistName, artworkUrl60: artworkUrl60)
+            return Item(type: type, trackId: trackId, trackName: trackName, artistName: artistName, artworkUrl60: artworkUrl60)
         } else {
             return nil
         }

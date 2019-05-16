@@ -89,7 +89,7 @@ class APIHelper {
     
     // MARK: - Search request
     
-    func searchItems(ofType type: String, withSearchString searchString: String, completionHandler: @escaping DictionaryResponseBlock) {
+    func searchItems(of type: String, with searchString: String, completionHandler: @escaping DictionaryResponseBlock) {
         let parametersDict: [String : Any] = ["media": type, "term": searchString]
 
         let request = createRequest(withPath: "search", method: .GET, parameters: parametersDict)
