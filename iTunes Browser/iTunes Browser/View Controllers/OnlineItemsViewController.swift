@@ -32,6 +32,16 @@ class OnlineItemsViewController: UIViewController {
         }
     }
     
+    @IBOutlet private weak var noResultsStackView: UIStackView!
+    
+    @IBOutlet private weak var noResultsLabel: UILabel! {
+        didSet {
+            noResultsLabel.text = "No Results"
+        }
+    }
+    
+    @IBOutlet private weak var forSearchStringLabel: UILabel!
+
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Private variables
@@ -119,6 +129,8 @@ class OnlineItemsViewController: UIViewController {
         guard let itemType = currentItemType else {
             fatalError("currentItemType is nil in setUpTypeSegmentedControl() !")
         }
+        
+        noResultsStackView.isHidden = true
 
         activityIndicator.startAnimating()
         
@@ -130,7 +142,12 @@ class OnlineItemsViewController: UIViewController {
                     self?.tableView.reloadData()
                     
                     if OnlineDataManager.sharedInstance.items.count > 0 {
+                        self?.tableView.isHidden = false
                         self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                    } else {
+                        self?.forSearchStringLabel.text = "for \"\(self?.currentSearchString ?? "")\""
+                        self?.noResultsStackView.isHidden = false
+                        self?.tableView.isHidden = true
                     }
                 } else {
                     let alertController = UIAlertController(title: "Error", message: "There was an error while updating items.", preferredStyle: .alert)

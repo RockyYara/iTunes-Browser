@@ -4,9 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +30,6 @@
                             </segmentedControl>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Type here to search..." translatesAutoresizingMaskIntoConstraints="NO" id="uKy-Tw-7gG">
                                 <rect key="frame" x="0.0" y="83" width="375" height="56"/>
-                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="oph-Od-GGW"/>
@@ -43,6 +42,23 @@
                                     <outletCollection property="gestureRecognizers" destination="BpU-iC-e2p" appends="YES" id="1rn-IP-dvT"/>
                                 </connections>
                             </tableView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-4z-PL8">
+                                <rect key="frame" x="162.5" y="364" width="50" height="78.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kct-de-4Ur">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for &quot;&quot;" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kq0-91-yBJ">
+                                        <rect key="frame" x="5" y="58" width="40" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-gn-ysm">
                                 <rect key="frame" x="177.5" y="393" width="20" height="20"/>
                             </activityIndicatorView>
@@ -54,7 +70,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IDT-4l-pW6" secondAttribute="trailing" id="7Wr-Fj-YfF"/>
                             <constraint firstItem="IDT-4l-pW6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BCb-DH-Ixu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IDT-4l-pW6" secondAttribute="bottom" id="HII-5F-D5r"/>
+                            <constraint firstItem="eGR-4z-PL8" firstAttribute="centerX" secondItem="IDT-4l-pW6" secondAttribute="centerX" id="OyR-E6-UcY"/>
                             <constraint firstItem="uKy-Tw-7gG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tvq-XD-pjC"/>
+                            <constraint firstItem="eGR-4z-PL8" firstAttribute="centerY" secondItem="IDT-4l-pW6" secondAttribute="centerY" id="ZYm-rt-gBQ"/>
                             <constraint firstItem="9ep-5P-xqN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="19" id="fIp-nv-hit"/>
                             <constraint firstItem="uKy-Tw-7gG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lvg-bL-IM7"/>
                             <constraint firstItem="uKy-Tw-7gG" firstAttribute="top" secondItem="9ep-5P-xqN" secondAttribute="bottom" constant="16" id="pgx-gu-7Dg"/>
@@ -69,6 +87,9 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="ppa-gn-ysm" id="IP0-aS-rYN"/>
+                        <outlet property="forSearchStringLabel" destination="kq0-91-yBJ" id="oDW-R3-7B3"/>
+                        <outlet property="noResultsLabel" destination="kct-de-4Ur" id="Sca-Wd-qdq"/>
+                        <outlet property="noResultsStackView" destination="eGR-4z-PL8" id="yL1-ue-sTQ"/>
                         <outlet property="searchBar" destination="uKy-Tw-7gG" id="wJe-8s-68V"/>
                         <outlet property="tableView" destination="IDT-4l-pW6" id="P8X-Aj-i5I"/>
                         <outlet property="typeSegmentedControl" destination="9ep-5P-xqN" id="qKz-ol-ykw"/>
