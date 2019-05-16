@@ -28,10 +28,10 @@
                                     <action selector="typeSegmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Yiw-b2-TRC"/>
                                 </connections>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" placeholder="Type here to search..." translatesAutoresizingMaskIntoConstraints="NO" id="uKy-Tw-7gG">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Type here to search..." translatesAutoresizingMaskIntoConstraints="NO" id="uKy-Tw-7gG">
                                 <rect key="frame" x="0.0" y="83" width="375" height="56"/>
                                 <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="oph-Od-GGW"/>
                                 </connections>
@@ -63,6 +63,9 @@
                             <constraint firstItem="uKy-Tw-7gG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="u1W-bP-6ds"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xdW-Ni-8rN" appends="YES" id="n2h-cO-Xbo"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="ppa-gn-ysm" id="IP0-aS-rYN"/>
@@ -74,7 +77,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="BpU-iC-e2p">
                     <connections>
-                        <action selector="tableViewTapped" destination="BYZ-38-t0r" id="PnH-Xp-43a"/>
+                        <action selector="outsideTapped" destination="BYZ-38-t0r" id="PnH-Xp-43a"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="xdW-Ni-8rN">
+                    <connections>
+                        <action selector="outsideTapped" destination="BYZ-38-t0r" id="FvN-92-8Zz"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

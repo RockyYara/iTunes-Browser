@@ -10,6 +10,9 @@ import Foundation
 
 enum ItemType: String, CaseIterable {
     
+    // New media types can be easily added as new cases of ItemType enum.
+    // This is the only required thing to be done to add new media types throughout the app.
+
     case music
     case ebook
     case software

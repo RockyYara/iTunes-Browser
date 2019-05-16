@@ -15,6 +15,8 @@ class OnlineItemsViewController: UIViewController {
     private let lastOpenedItemsTypeInModeKeyName = "LastOpenedItemsTypeInMode"
     private let viewControllerForMode = "Online"
     
+    private let lastSearchStringKeyName = "LastSearchString"
+    
     private let cellReuseIdentifier = "cellReuseId"
     
     // MARK: - Outlets
@@ -45,6 +47,8 @@ class OnlineItemsViewController: UIViewController {
             if currentSearchString == "" {
                 currentSearchString = nil
             }
+
+            UserDefaults.standard.setValue(searchBar.text, forKey: lastSearchStringKeyName)
         }
     }
     
@@ -55,6 +59,7 @@ class OnlineItemsViewController: UIViewController {
 
         setUpCurrentItemType()
         setUpTypeSegmentedControl()
+        setUpSearch()
         
         // Temporarily for test purposes.
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
@@ -65,14 +70,14 @@ class OnlineItemsViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction private func typeSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        resignSearchBarFirstResponderIfEmpty()
+        
         currentItemType = ItemType.allCases[sender.selectedSegmentIndex]
         refreshItems()
     }
     
-    @IBAction func tableViewTapped() {
-        if searchBar.isFirstResponder {
-            searchBar.resignFirstResponder()
-        }
+    @IBAction private func outsideTapped() {
+        resignSearchBarFirstResponderIfEmpty()
     }
     
     // MARK: - Internal
@@ -103,6 +108,13 @@ class OnlineItemsViewController: UIViewController {
         typeSegmentedControl.selectedSegmentIndex = indexOfCurrentItemType
     }
     
+    private func setUpSearch() {
+        if let lastSearchString = UserDefaults.standard.value(forKey: lastSearchStringKeyName) as? String {
+            currentSearchString = lastSearchString
+            searchBar.text = lastSearchString
+        }
+    }
+    
     private func refreshItems() {
         guard let itemType = currentItemType else {
             fatalError("currentItemType is nil in setUpTypeSegmentedControl() !")
@@ -130,6 +142,12 @@ class OnlineItemsViewController: UIViewController {
                 
                 self?.activityIndicator.stopAnimating()
             }
+        }
+    }
+    
+    private func resignSearchBarFirstResponderIfEmpty() {
+        if searchBar.isFirstResponder, searchBar.text?.count ?? -1 == 0 {
+            searchBar.resignFirstResponder()
         }
     }
 }
@@ -166,23 +184,35 @@ extension OnlineItemsViewController: UITableViewDelegate {
 
 extension OnlineItemsViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if searchBar.isFirstResponder {
-            searchBar.resignFirstResponder()
-        }
+        resignSearchBarFirstResponderIfEmpty()
     }
 }
 
 // MARK: - UISearchBarDelegate
 
 extension OnlineItemsViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         
-        searchBar.text = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if let trimmedSearchBarText = searchBar.text {
-            currentSearchString = trimmedSearchBarText
+        if let searchBarText = searchBar.text, currentSearchString != searchBarText {
+            currentSearchString = searchBarText
             refreshItems()
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        searchBar.text = ""
+        currentSearchString = nil
+        refreshItems()
     }
 }
