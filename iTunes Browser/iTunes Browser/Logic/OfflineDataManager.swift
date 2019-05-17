@@ -72,4 +72,13 @@ class OfflineDataManager {
         saveData()
     }
     
+    func deleteOfflineItem(_ offlineItem: OfflineItem) {
+        context.delete(offlineItem)
+
+        print("Deleted")
+
+        // I prefer to save Core Data context as soon as possible, for example for cases of unexpected app termination (like Stop command sent from Xcode).
+        saveData()
+    }
+    
 }

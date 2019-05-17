@@ -196,11 +196,6 @@ extension OnlineItemsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-        // This is used to override .delete editing style, which is the default.
-    }
-
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let item = OnlineDataManager.sharedInstance.items[indexPath.row]
         
@@ -216,6 +211,23 @@ extension OnlineItemsViewController: UITableViewDelegate {
         } else {
             return UISwipeActionsConfiguration(actions: [])
             // We don't allow the user to save items which have already been saved locally.
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = OnlineDataManager.sharedInstance.items[indexPath.row]
+        
+        if let existingOfflineItem = OfflineDataManager.sharedInstance.offlineItem(of: item.type, with: item.trackId) {
+            let daleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, handler) in
+                OfflineDataManager.sharedInstance.deleteOfflineItem(existingOfflineItem)
+                handler(false)
+                // Here we pass false to the completion handler because we don't want the item to be completely removed from table view.
+            }
+            
+            return UISwipeActionsConfiguration(actions: [daleteAction])
+        } else {
+            return UISwipeActionsConfiguration(actions: [])
+            // We don't allow the user to delete items which have not been saved locally yet.
         }
     }
 }
