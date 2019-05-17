@@ -75,7 +75,7 @@ class OnlineItemsViewController: UIViewController {
         setUpSearch()
         
         // Temporarily for test purposes.
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
 
         refreshItems()
     }
@@ -186,7 +186,7 @@ extension OnlineItemsViewController: UITableViewDataSource {
         
         // Temporarily for test purposes.
         cell.textLabel?.text = "\(item.trackName)"
-//        cell.detailTextLabel?.text = "\(item.artistName)"
+        cell.detailTextLabel?.text = "\(item.artistName)"
         
         return cell
     }
