@@ -198,19 +198,25 @@ extension OnlineItemsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
+        // This is used to override .delete editing style, which is the default.
     }
 
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let saveAction = UIContextualAction(style: .normal, title: "Save") { (action, sourceView, handler) in
-            let item = OnlineDataManager.sharedInstance.items[indexPath.row]
-            OfflineDataManager.sharedInstance.saveOrUpdateItem(item)
+        let item = OnlineDataManager.sharedInstance.items[indexPath.row]
+        
+        if OfflineDataManager.sharedInstance.offlineItem(of: item.type, with: item.trackId) == nil {
+            let saveAction = UIContextualAction(style: .normal, title: "Save") { (action, sourceView, handler) in
+                OfflineDataManager.sharedInstance.saveOrUpdateItem(item)
+                handler(true)
+            }
             
-            handler(true)
+            saveAction.backgroundColor = view.tintColor
+            
+            return UISwipeActionsConfiguration(actions: [saveAction])
+        } else {
+            return UISwipeActionsConfiguration(actions: [])
+            // We don't allow the user to save items which have already been saved locally.
         }
-
-        saveAction.backgroundColor = view.tintColor
-
-        return UISwipeActionsConfiguration(actions: [saveAction])
     }
 }
 
