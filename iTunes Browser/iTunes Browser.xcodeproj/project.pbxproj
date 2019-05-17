@@ -20,6 +20,7 @@
 		D81F911B227F29C50036DC5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81F9119227F29C50036DC5D /* LaunchScreen.storyboard */; };
 		D81F9138228087050036DC5D /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F9137228087050036DC5D /* ItemType.swift */; };
 		D8233C10228DAB9C00869ADD /* OfflineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */; };
+		D886A3A3228F092D009254C2 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D886A3A2228F092D009254C2 /* alert.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D81F911C227F29C50036DC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D81F9137228087050036DC5D /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDataManager.swift; sourceTree = "<group>"; };
+		D886A3A2228F092D009254C2 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alert.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				D81F910D227F29C50036DC5D /* AppDelegate.swift */,
 				D81F9111227F29C50036DC5D /* Main.storyboard */,
 				D81F9117227F29C50036DC5D /* Assets.xcassets */,
+				D886A3A2228F092D009254C2 /* alert.mp3 */,
 				D81F9119227F29C50036DC5D /* LaunchScreen.storyboard */,
 				D81F911C227F29C50036DC5D /* Info.plist */,
 				D81F9114227F29C50036DC5D /* iTunes_Browser.xcdatamodeld */,
@@ -189,6 +192,7 @@
 				D81F911B227F29C50036DC5D /* LaunchScreen.storyboard in Resources */,
 				D81F9118227F29C50036DC5D /* Assets.xcassets in Resources */,
 				D81F9113227F29C50036DC5D /* Main.storyboard in Resources */,
+				D886A3A3228F092D009254C2 /* alert.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

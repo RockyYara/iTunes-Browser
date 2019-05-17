@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class OnlineItemsViewController: UIViewController {
     
@@ -61,6 +62,8 @@ class OnlineItemsViewController: UIViewController {
             UserDefaults.standard.setValue(searchBar.text, forKey: lastSearchStringKeyName)
         }
     }
+    
+    private var audioPlayer: AVAudioPlayer?
     
     // MARK: - View life cycle
 
@@ -222,6 +225,8 @@ extension OnlineItemsViewController: UITableViewDelegate {
                 if let alertController = self?.createAlertControllerForDeletionOfOfflineItem(existingOfflineItem, at: indexPath, handler) {
                     self?.present(alertController, animated: true)
                 }
+                
+                self?.playAlertSound()
             }
             
             return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -234,8 +239,8 @@ extension OnlineItemsViewController: UITableViewDelegate {
     // MARK: Helper methods
     
     private func createAlertControllerForDeletionOfOfflineItem(_ existingOfflineItem: OfflineItem, at indexPath: IndexPath, _ handler: @escaping (Bool) -> Void) -> UIAlertController {
-        let alertController = UIAlertController(title: "Delete Confirmation",
-                                                message: "Would you like to delete this item from offline storage?",
+        let alertController = UIAlertController(title: "Would you like to delete this item from offline storage?",
+                                                message: nil,
                                                 preferredStyle: .actionSheet)
         
         // Here we set up PopoverPresentationController so our Action Sheet will be presented at the right position on iPad and pointing to Delete button pressed.
@@ -266,6 +271,15 @@ extension OnlineItemsViewController: UITableViewDelegate {
         }
         
         popoverPresentationController.permittedArrowDirections = [.up, .down]
+    }
+    
+    private func playAlertSound() {
+        if let url = Bundle.main.url(forResource: "alert", withExtension: "mp3") {
+            if let _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback), let _ = try? AVAudioSession.sharedInstance().setActive(true) {
+                audioPlayer = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+                audioPlayer?.play()
+            }
+        }
     }
 }
 
