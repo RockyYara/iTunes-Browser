@@ -188,6 +188,23 @@ extension OnlineItemsViewController: UITableViewDataSource {
         cell.textLabel?.text = "\(item.trackName)"
         cell.detailTextLabel?.text = "\(item.artistName)"
         
+        if let image = item.image {
+            cell.imageView?.image = image
+        } else {
+            cell.imageView?.image = nil
+            
+            OnlineDataManager.sharedInstance.downloadImage(for: item) { success in
+                DispatchQueue.main.async {
+                    if let cellDisplayingThisIndexPathNow = tableView.cellForRow(at: indexPath) {
+                        cellDisplayingThisIndexPathNow.imageView?.image = success ? (item.image ?? nil) : nil
+                        
+                        // We need to invalidate current cell layout, because UITableViewCell does not do it automatically after image in image view gets set.
+                        cellDisplayingThisIndexPathNow.setNeedsLayout()
+                    }
+                }
+            }
+        }
+        
         return cell
     }
 }

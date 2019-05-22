@@ -18,12 +18,15 @@ class Item {
     
     let artworkUrl60: String?
     
+    var image: UIImage?
+    
     init(type: ItemType, trackId: Int, trackName: String, artistName: String, artworkUrl60: String?) {
         self.type = type
         self.trackId = trackId
         self.trackName = trackName
         self.artistName = artistName
         self.artworkUrl60 = artworkUrl60
+        self.image = nil
     }
     
 }

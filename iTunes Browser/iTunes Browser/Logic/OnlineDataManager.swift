@@ -38,4 +38,25 @@ class OnlineDataManager {
             }
         }
     }
+    
+    func downloadImage(for item: Item, completionHandler: @escaping (Bool) -> Void) {
+        guard let url = item.artworkUrl60 else {
+            completionHandler(false)
+            return
+        }
+        
+        apiHelper.externalResourceGetData(with: url) { resultData in
+            guard let data = resultData else {
+                completionHandler(false)
+                return
+            }
+            
+            if let image = UIImage(data: data) {
+                item.image = image
+                completionHandler(true)
+            } else {
+                completionHandler(false)
+            }
+        }
+    }
 }

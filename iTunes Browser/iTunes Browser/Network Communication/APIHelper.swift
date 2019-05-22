@@ -16,6 +16,7 @@ enum HTTPMethod: String {
 }
 
 typealias DictionaryResponseBlock = ([String : Any]?) -> Void
+typealias DataResponseBlock = (Data?) -> Void
 
 class APIHelper {
     
@@ -87,6 +88,20 @@ class APIHelper {
         completionHandler(resultDict);
     }
     
+    private func processDataResponse(with data: Data?, request: URLRequest, response: URLResponse?, error: Error?, completionHandler: DataResponseBlock) {
+        let statusCode: Int = (response as? HTTPURLResponse)?.statusCode ?? -1
+
+        var resultData: Data? = nil
+        
+        if error == nil && statusCode == 200 {
+            resultData = data
+        } else {
+            printError(forRequest: request, response: response, data: data, error: error)
+        }
+        
+        completionHandler(resultData);
+    }
+
     // MARK: - Search request
     
     func searchItems(of type: String, with searchString: String, completionHandler: @escaping DictionaryResponseBlock) {
@@ -96,6 +111,23 @@ class APIHelper {
         
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             self?.processDataDictionaryResponse(withData: data, request: request, response: response, error: error, completionHandler: completionHandler)
+        }
+        
+        dataTask.resume()
+    }
+
+    // MARK: - External resource request
+    
+    func externalResourceGetData(with url: String, completionHandler: @escaping DataResponseBlock) -> Void {
+        guard let requestURL = URL(string: url) else {
+            completionHandler(nil)
+            return
+        }
+        
+        let request = URLRequest(url: requestURL)
+        
+        let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
+            self?.processDataResponse(with: data, request: request, response: response, error: error, completionHandler: completionHandler)
         }
         
         dataTask.resume()
