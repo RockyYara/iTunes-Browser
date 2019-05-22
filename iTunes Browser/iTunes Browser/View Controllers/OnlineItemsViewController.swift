@@ -194,9 +194,11 @@ extension OnlineItemsViewController: UITableViewDataSource {
             cell.imageView?.image = nil
             
             OnlineDataManager.sharedInstance.downloadImage(for: item) { success in
+                let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
+                
                 DispatchQueue.main.async {
                     if let cellDisplayingThisIndexPathNow = tableView.cellForRow(at: indexPath) {
-                        cellDisplayingThisIndexPathNow.imageView?.image = success ? (item.image ?? nil) : nil
+                        cellDisplayingThisIndexPathNow.imageView?.image = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
                         
                         // We need to invalidate current cell layout, because UITableViewCell does not do it automatically after image in image view gets set.
                         cellDisplayingThisIndexPathNow.setNeedsLayout()

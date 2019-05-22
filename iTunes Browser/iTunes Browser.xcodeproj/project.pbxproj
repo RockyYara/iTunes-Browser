@@ -23,6 +23,7 @@
 		D886A3A3228F092D009254C2 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D886A3A2228F092D009254C2 /* alert.mp3 */; };
 		D886A3A9228F0E94009254C2 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886A3A7228F0E94009254C2 /* ItemTableViewCell.m */; };
 		D886A3AA228F0E94009254C2 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D886A3A8228F0E94009254C2 /* ItemTableViewCell.xib */; };
+		D89C921D2295A520004A396E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89C921C2295A520004A396E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D886A3A6228F0E94009254C2 /* ItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
 		D886A3A7228F0E94009254C2 /* ItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		D886A3A8228F0E94009254C2 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
+		D89C921C2295A520004A396E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				D886A3A4228F0E0F009254C2 /* Custom UI Elements */,
 				D81F90C9227B7EB10036DC5D /* View Controllers */,
 				D81F910D227F29C50036DC5D /* AppDelegate.swift */,
+				D89C921C2295A520004A396E /* Constants.swift */,
 				D886A3A5228F0E94009254C2 /* iTunes Browser-Bridging-Header.h */,
 				D81F9111227F29C50036DC5D /* Main.storyboard */,
 				D81F9117227F29C50036DC5D /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 				D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */,
 				D81F90C8227B7DA60036DC5D /* OnlineItemsViewController.swift in Sources */,
 				D81F90DB227F1F7A0036DC5D /* ModelParser.swift in Sources */,
+				D89C921D2295A520004A396E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
