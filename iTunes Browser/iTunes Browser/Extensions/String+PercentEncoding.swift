@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    func stringByAddingPercentEncodingToData() -> String? {
+    func percentEncoded() -> String? {
         var result = addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
         
         // Additional characters encoding.

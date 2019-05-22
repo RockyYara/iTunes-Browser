@@ -239,7 +239,7 @@ extension OnlineItemsViewController: UITableViewDelegate {
         
         if let existingOfflineItem = OfflineDataManager.sharedInstance.offlineItem(of: item.type, with: item.trackId) {
             let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, handler) in
-                if let alertController = self?.createAlertControllerForDeletionOfOfflineItem(existingOfflineItem, at: indexPath, handler) {
+                if let alertController = self?.createAlertControllerForDeletion(of: existingOfflineItem, at: indexPath, completionHandler: handler) {
                     self?.present(alertController, animated: true)
                 }
                 
@@ -255,30 +255,30 @@ extension OnlineItemsViewController: UITableViewDelegate {
     
     // MARK: Helper methods
     
-    private func createAlertControllerForDeletionOfOfflineItem(_ existingOfflineItem: OfflineItem, at indexPath: IndexPath, _ handler: @escaping (Bool) -> Void) -> UIAlertController {
+    private func createAlertControllerForDeletion(of existingOfflineItem: OfflineItem, at indexPath: IndexPath, completionHandler: @escaping (Bool) -> Void) -> UIAlertController {
         let alertController = UIAlertController(title: "Would you like to delete this item from offline storage?",
                                                 message: nil,
                                                 preferredStyle: .actionSheet)
         
         // Here we set up PopoverPresentationController so our Action Sheet will be presented at the right position on iPad and pointing to Delete button pressed.
         if let popoverPresentationController = alertController.popoverPresentationController {
-            setUpPopoverPresentationController(popoverPresentationController, for: alertController, indexPath)
+            setUpPopoverPresentationController(popoverPresentationController, for: alertController, indexPath: indexPath)
         }
         
         alertController.addAction(UIAlertAction(title: "Delete", style: .destructive) { action in
             OfflineDataManager.sharedInstance.deleteOfflineItem(existingOfflineItem)
-            handler(false)
+            completionHandler(false)
             // Here we pass false to the completion handler because we don't want the item to be completely removed from the table view.
         })
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
-            handler(false)
+            completionHandler(false)
         })
         
         return alertController
     }
 
-    private func setUpPopoverPresentationController(_ popoverPresentationController: UIPopoverPresentationController, for alertController: UIAlertController, _ indexPath: IndexPath) {
+    private func setUpPopoverPresentationController(_ popoverPresentationController: UIPopoverPresentationController, for alertController: UIAlertController, indexPath: IndexPath) {
         popoverPresentationController.sourceView = tableView.cellForRow(at: indexPath)
         
         // Here we calculate the best point for Action Sheet's arrow to point to.

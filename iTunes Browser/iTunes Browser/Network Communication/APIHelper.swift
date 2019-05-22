@@ -36,7 +36,7 @@ class APIHelper {
             params.forEach {
                 var (key, value) = $0
                 
-                if let stringValue = value as? String, let percentEncodedValue = stringValue.stringByAddingPercentEncodingToData() {
+                if let stringValue = value as? String, let percentEncodedValue = stringValue.percentEncoded(){
                     value = percentEncodedValue
                 }
                 
@@ -60,7 +60,7 @@ class APIHelper {
         return request
     }
     
-    private func printError(forRequest request: URLRequest, response: URLResponse?, data: Data?, error: Error?) {
+    private func printError(for request: URLRequest, response: URLResponse?, data: Data?, error: Error?) {
         print("URL: \(response?.url ?? request.url!) Status code: \((response as? HTTPURLResponse)?.statusCode ?? -1) \(error?.localizedDescription ?? "Error")")
         
         if let responseData = data {
@@ -70,7 +70,7 @@ class APIHelper {
         }
     }
     
-    private func processDataDictionaryResponse(withData data: Data?, request: URLRequest, response: URLResponse?, error: Error?, completionHandler: DictionaryResponseBlock) {
+    private func processDataDictionaryResponse(with data: Data?, request: URLRequest, response: URLResponse?, error: Error?, completionHandler: DictionaryResponseBlock) {
         let statusCode: Int = (response as? HTTPURLResponse)?.statusCode ?? -1
         
         var resultDict: [String : Any]? = nil
@@ -82,7 +82,7 @@ class APIHelper {
                 }
             }
         } else {
-            printError(forRequest: request, response: response, data: data, error: error)
+            printError(for: request, response: response, data: data, error: error)
         }
         
         completionHandler(resultDict);
@@ -96,7 +96,7 @@ class APIHelper {
         if error == nil && statusCode == 200 {
             resultData = data
         } else {
-            printError(forRequest: request, response: response, data: data, error: error)
+            printError(for: request, response: response, data: data, error: error)
         }
         
         completionHandler(resultData);
@@ -110,7 +110,7 @@ class APIHelper {
         let request = createRequest(withPath: "search", method: .GET, parameters: parametersDict)
         
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
-            self?.processDataDictionaryResponse(withData: data, request: request, response: response, error: error, completionHandler: completionHandler)
+            self?.processDataDictionaryResponse(with: data, request: request, response: response, error: error, completionHandler: completionHandler)
         }
         
         dataTask.resume()
