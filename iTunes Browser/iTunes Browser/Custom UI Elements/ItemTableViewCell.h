@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ItemTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *itemNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *authorNameLabel;
+
+@property (nonatomic, weak) IBOutlet UIImageView *itemImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *savedLocallyImageView;
+
 @end
 
 NS_ASSUME_NONNULL_END

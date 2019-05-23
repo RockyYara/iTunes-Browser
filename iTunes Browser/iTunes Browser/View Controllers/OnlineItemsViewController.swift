@@ -74,8 +74,8 @@ class OnlineItemsViewController: UIViewController {
         setUpTypeSegmentedControl()
         setUpSearch()
         
-        // Temporarily for test purposes.
-        tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        let cellNib = UINib(nibName: String(describing: ItemTableViewCell.self), bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
 
         refreshItems()
     }
@@ -180,34 +180,45 @@ extension OnlineItemsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        let genericCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        
+        guard let cell = genericCell as? ItemTableViewCell else {
+            return genericCell
+        }
         
         let item = OnlineDataManager.sharedInstance.items[indexPath.row]
         
-        // Temporarily for test purposes.
-        cell.textLabel?.text = "\(item.trackName)"
-        cell.detailTextLabel?.text = "\(item.artistName)"
+        configure(cell, for: item, at: indexPath)
+
+        return cell
+    }
+    
+    // MARK: Helper methods
+
+    private func configure(_ cell: ItemTableViewCell, for item: Item, at indexPath: IndexPath) {
+        cell.itemNameLabel?.text = "\(item.trackName)"
+        cell.authorNameLabel?.text = "\(item.artistName)"
+        
+        // Here we check if this item is saved locally.
+        let offlineItem = OfflineDataManager.sharedInstance.offlineItem(of: item.type, with: item.trackId)
+        cell.savedLocallyImageView?.alpha = (offlineItem != nil ? 1 : 0)
         
         if let image = item.image {
-            cell.imageView?.image = image
+            cell.itemImageView?.image = image
         } else {
-            cell.imageView?.image = nil
+            cell.itemImageView?.image = nil
             
-            OnlineDataManager.sharedInstance.downloadImage(for: item) { success in
+            OnlineDataManager.sharedInstance.downloadImage(for: item) { [weak self] success in
                 let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
                 
                 DispatchQueue.main.async {
-                    if let cellDisplayingThisIndexPathNow = tableView.cellForRow(at: indexPath) {
-                        cellDisplayingThisIndexPathNow.imageView?.image = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
+                    if let cellDisplayingThisIndexPathNow = self?.tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
+                        cellDisplayingThisIndexPathNow.itemImageView?.image = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
                         
-                        // We need to invalidate current cell layout, because UITableViewCell does not do it automatically after image in image view gets set.
-                        cellDisplayingThisIndexPathNow.setNeedsLayout()
                     }
                 }
             }
         }
-        
-        return cell
     }
 }
 
@@ -224,6 +235,13 @@ extension OnlineItemsViewController: UITableViewDelegate {
         if OfflineDataManager.sharedInstance.offlineItem(of: item.type, with: item.trackId) == nil {
             let saveAction = UIContextualAction(style: .normal, title: "Save") { (action, sourceView, handler) in
                 OfflineDataManager.sharedInstance.saveOrUpdateItem(item)
+                
+                if let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
+                    UIView.animate(withDuration: 0.5) {
+                        cell.savedLocallyImageView?.alpha = 1
+                    }
+                }
+                
                 handler(true)
             }
             
@@ -267,8 +285,15 @@ extension OnlineItemsViewController: UITableViewDelegate {
             setUpPopoverPresentationController(popoverPresentationController, for: alertController, indexPath: indexPath)
         }
         
-        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive) { action in
+        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive) { [weak self] action in
             OfflineDataManager.sharedInstance.deleteOfflineItem(existingOfflineItem)
+
+            if let cell = self?.tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
+                UIView.animate(withDuration: 0.5) {
+                    cell.savedLocallyImageView?.alpha = 0
+                }
+            }
+
             completionHandler(false)
             // Here we pass false to the completion handler because we don't want the item to be completely removed from the table view.
         })
