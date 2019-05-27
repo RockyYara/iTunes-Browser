@@ -56,7 +56,7 @@ class OfflineDataManager {
             existingItem.trackName = item.trackName
             existingItem.artistName = item.artistName
             
-            existingItem.image = item.image?.pngData()
+            existingItem.image = item.image?.grayscaled()?.pngData()
 
             print("Updated existing")
         } else {
@@ -67,7 +67,7 @@ class OfflineDataManager {
             newItem.trackName = item.trackName
             newItem.artistName = item.artistName
 
-            newItem.image = item.image?.pngData()
+            newItem.image = item.image?.grayscaled()?.pngData()
 
             print("Saved new")
         }
