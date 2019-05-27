@@ -38,7 +38,7 @@
                             <constraint firstAttribute="height" constant="60" id="Doo-9q-3gq"/>
                         </constraints>
                     </imageView>
-                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="353-HC-qjT">
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="353-HC-qjT">
                         <rect key="frame" x="274" y="17.5" width="26" height="26"/>
                     </imageView>
                 </subviews>
@@ -48,9 +48,11 @@
                     <constraint firstAttribute="trailing" secondItem="353-HC-qjT" secondAttribute="trailing" constant="20" symbolic="YES" id="F7M-7P-rRD"/>
                     <constraint firstItem="niF-he-be2" firstAttribute="leading" secondItem="KiA-NQ-oiz" secondAttribute="trailing" constant="8" symbolic="YES" id="M9P-hU-y6w"/>
                     <constraint firstItem="KiA-NQ-oiz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VMD-Bc-DRJ"/>
+                    <constraint firstItem="h6L-VT-yoQ" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="353-HC-qjT" secondAttribute="leading" constant="-8" id="XCe-Bw-dJg"/>
                     <constraint firstItem="niF-he-be2" firstAttribute="top" secondItem="h6L-VT-yoQ" secondAttribute="bottom" constant="4" id="ZiB-Cj-owF"/>
                     <constraint firstItem="353-HC-qjT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="czU-6T-mBZ"/>
                     <constraint firstItem="h6L-VT-yoQ" firstAttribute="leading" secondItem="KiA-NQ-oiz" secondAttribute="trailing" constant="8" symbolic="YES" id="te7-s7-INb"/>
+                    <constraint firstItem="niF-he-be2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="353-HC-qjT" secondAttribute="leading" constant="-8" id="ulL-nJ-T9D"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
