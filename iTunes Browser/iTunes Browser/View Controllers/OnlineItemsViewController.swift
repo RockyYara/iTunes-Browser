@@ -220,7 +220,9 @@ extension OnlineItemsViewController: UITableViewDataSource {
                 // The cell at given indexPath is displaying item which can be acquired from the items array.
                 // Then we compare it with the item downloaded image is for.
                 
-                if OnlineDataManager.sharedInstance.items[indexPath.row] === item {
+                let items = OnlineDataManager.sharedInstance.items
+                
+                if items.count > indexPath.row && items[indexPath.row] === item {
                     let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
                     // It's perfectly legal to initialize new UIImage not on the main thread, because no actual UI is being accessed during image initialization.
                     // After that we definitely have to switch to the main thread.
