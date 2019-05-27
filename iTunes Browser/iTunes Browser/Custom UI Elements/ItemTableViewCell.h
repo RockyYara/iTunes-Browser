@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIImageView *itemImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *savedLocallyImageView;
 
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
 NS_ASSUME_NONNULL_END

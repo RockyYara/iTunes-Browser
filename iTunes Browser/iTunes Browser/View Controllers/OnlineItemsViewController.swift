@@ -205,8 +205,10 @@ extension OnlineItemsViewController: UITableViewDataSource {
         
         if let image = item.image {
             cell.itemImageView?.image = image
+            cell.activityIndicator?.stopAnimating()
         } else {
             cell.itemImageView?.image = nil
+            cell.activityIndicator?.startAnimating()
             
             OnlineDataManager.sharedInstance.downloadImage(for: item) { [weak self] success in
                 let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
@@ -214,7 +216,7 @@ extension OnlineItemsViewController: UITableViewDataSource {
                 DispatchQueue.main.async {
                     if let cellDisplayingThisIndexPathNow = self?.tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
                         cellDisplayingThisIndexPathNow.itemImageView?.image = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
-                        
+                        cellDisplayingThisIndexPathNow.activityIndicator?.stopAnimating()
                     }
                 }
             }
