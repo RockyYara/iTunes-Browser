@@ -211,12 +211,25 @@ extension OnlineItemsViewController: UITableViewDataSource {
             cell.activityIndicator?.startAnimating()
             
             OnlineDataManager.sharedInstance.downloadImage(for: item) { [weak self] success in
-                let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
+                // We want to update the cell's image only if the cell is still displaying the item downloaded image is for.
+                // This is especially important for slow networks and users making a lot of actions quickly.
+                //
+                // But the cell itself doesn't and shouldn't know which item it is displaying (cell is only a view).
+                // Fortunately we know indexPath of the cell downloaded image is for.
+                //
+                // The cell at given indexPath is displaying item which can be acquired from the items array.
+                // Then we compare it with the item downloaded image is for.
                 
-                DispatchQueue.main.async {
-                    if let cellDisplayingThisIndexPathNow = self?.tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
-                        cellDisplayingThisIndexPathNow.itemImageView?.image = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
-                        cellDisplayingThisIndexPathNow.activityIndicator?.stopAnimating()
+                if OnlineDataManager.sharedInstance.items[indexPath.row] === item {
+                    let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
+                    // It's perfectly legal to initialize new UIImage not on the main thread, because no actual UI is being accessed during image initialization.
+                    // After that we definitely have to switch to the main thread.
+
+                    DispatchQueue.main.async {
+                        if let cellDisplayingThisIndexPathNow = self?.tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
+                            cellDisplayingThisIndexPathNow.itemImageView?.image = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
+                            cellDisplayingThisIndexPathNow.activityIndicator?.stopAnimating()
+                        }
                     }
                 }
             }
