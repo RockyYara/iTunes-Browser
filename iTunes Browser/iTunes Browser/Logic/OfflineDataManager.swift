@@ -55,6 +55,8 @@ class OfflineDataManager {
         if let existingItem = offlineItem(of: item.type, with: item.trackId) {
             existingItem.trackName = item.trackName
             existingItem.artistName = item.artistName
+            
+            existingItem.image = item.image?.pngData()
 
             print("Updated existing")
         } else {
@@ -64,6 +66,8 @@ class OfflineDataManager {
             newItem.trackId = Int64(item.trackId)
             newItem.trackName = item.trackName
             newItem.artistName = item.artistName
+
+            newItem.image = item.image?.pngData()
 
             print("Saved new")
         }
