@@ -207,7 +207,12 @@ extension OnlineItemsViewController: UITableViewDataSource {
             cell.itemImageView?.image = image
             cell.activityIndicator?.stopAnimating()
         } else {
-            cell.itemImageView?.image = nil
+            if let imageData = offlineItem?.image, let image = UIImage(data: imageData) {
+                cell.itemImageView?.image = image
+            } else {
+                cell.itemImageView?.image = nil
+            }
+            
             cell.activityIndicator?.startAnimating()
             
             OnlineDataManager.sharedInstance.downloadImage(for: item) { [weak self] success in
