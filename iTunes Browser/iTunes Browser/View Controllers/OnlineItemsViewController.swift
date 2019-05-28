@@ -234,8 +234,16 @@ extension OnlineItemsViewController: UITableViewDataSource {
 
                     DispatchQueue.main.async {
                         if let cellDisplayingThisIndexPathNow = self?.tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
-                            cellDisplayingThisIndexPathNow.itemImageView?.image = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
                             cellDisplayingThisIndexPathNow.activityIndicator?.stopAnimating()
+
+                            if let imageView = cellDisplayingThisIndexPathNow.itemImageView {
+                                let imageToBeSet = success ? (item.image ?? noImageAvailableImage) : noImageAvailableImage
+                                let transitionKind: UIView.AnimationOptions = (imageView.image != nil) ? .transitionFlipFromRight : .transitionCrossDissolve
+
+                                UIView.transition(with: imageView, duration: 0.5, options: transitionKind, animations: {
+                                    imageView.image = imageToBeSet
+                                })
+                            }
                         }
                     }
                 }
