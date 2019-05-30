@@ -21,6 +21,7 @@
 		D81F9138228087050036DC5D /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F9137228087050036DC5D /* ItemType.swift */; };
 		D81F98C7229BFD0500C6BD4C /* UIImage+Grayscaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */; };
 		D8233C10228DAB9C00869ADD /* OfflineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */; };
+		D826223C229D60E300B54902 /* DownloadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826223B229D60E300B54902 /* DownloadStatus.swift */; };
 		D886A3A3228F092D009254C2 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D886A3A2228F092D009254C2 /* alert.mp3 */; };
 		D886A3A9228F0E94009254C2 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886A3A7228F0E94009254C2 /* ItemTableViewCell.m */; };
 		D886A3AA228F0E94009254C2 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D886A3A8228F0E94009254C2 /* ItemTableViewCell.xib */; };
@@ -44,6 +45,7 @@
 		D81F9137228087050036DC5D /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscaling.swift"; sourceTree = "<group>"; };
 		D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDataManager.swift; sourceTree = "<group>"; };
+		D826223B229D60E300B54902 /* DownloadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadStatus.swift; sourceTree = "<group>"; };
 		D886A3A2228F092D009254C2 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alert.mp3; sourceTree = "<group>"; };
 		D886A3A5228F0E94009254C2 /* iTunes Browser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTunes Browser-Bridging-Header.h"; sourceTree = "<group>"; };
 		D886A3A6228F0E94009254C2 /* ItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				D81F9137228087050036DC5D /* ItemType.swift */,
 				D81F90D3227F01680036DC5D /* Item.swift */,
+				D826223B229D60E300B54902 /* DownloadStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				D81F90DB227F1F7A0036DC5D /* ModelParser.swift in Sources */,
 				D89C921D2295A520004A396E /* Constants.swift in Sources */,
 				D81F98C7229BFD0500C6BD4C /* UIImage+Grayscaling.swift in Sources */,
+				D826223C229D60E300B54902 /* DownloadStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
