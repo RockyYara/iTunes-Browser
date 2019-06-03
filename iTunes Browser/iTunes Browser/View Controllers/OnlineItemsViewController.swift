@@ -205,7 +205,6 @@ extension OnlineItemsViewController: UITableViewDataSource {
         
         if let image = item.image {
             cell.itemImageView?.image = image
-            cell.activityIndicator?.stopAnimating()
         } else {
             if let imageData = offlineItem?.image, let image = UIImage(data: imageData) {
                 cell.itemImageView?.image = image
