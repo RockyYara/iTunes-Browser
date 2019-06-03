@@ -13,6 +13,8 @@ class OfflineDataManager {
     
     static let sharedInstance = OfflineDataManager()
 
+    private(set) var items = [Item]()
+    
     // MARK: - Core Data stack initialization
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -48,6 +50,32 @@ class OfflineDataManager {
             return results[0]
         } else {
             return nil
+        }
+    }
+    
+    func loadItems(of type: ItemType) {
+        // Here I use "map" function to transform array of OfflineItems to array of Items.
+        
+        items = offlineItems(of: type).map {
+            let item = Item(type: type, trackId: Int($0.trackId), trackName: $0.trackName ?? "", artistName: $0.artistName ?? "", artworkUrl60: nil)
+            
+            if let imageData = $0.image {
+                item.image = UIImage(data: imageData)
+            }
+            
+            return item
+        }
+    }
+    
+    private func offlineItems(of type: ItemType) -> [OfflineItem] {
+        let fetchRequest = NSFetchRequest<OfflineItem>(entityName: "OfflineItem")
+        fetchRequest.predicate = NSPredicate(format: "type = %@", argumentArray: [type.rawValue])
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "trackName", ascending: true)]
+        
+        if let results = try? context.fetch(fetchRequest) as [OfflineItem] {
+            return results
+        } else {
+            return [OfflineItem]()
         }
     }
     
