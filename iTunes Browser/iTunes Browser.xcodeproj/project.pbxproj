@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D81F2FC422A5443E007CD129 /* OfflineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F2FC322A5443E007CD129 /* OfflineItemsViewController.swift */; };
 		D81F90C8227B7DA60036DC5D /* OnlineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */; };
 		D81F90D4227F01680036DC5D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D3227F01680036DC5D /* Item.swift */; };
 		D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D5227F03920036DC5D /* OnlineDataManager.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D81F2FC322A5443E007CD129 /* OfflineItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineItemsViewController.swift; sourceTree = "<group>"; };
 		D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineItemsViewController.swift; sourceTree = "<group>"; };
 		D81F90D3227F01680036DC5D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D81F90D5227F03920036DC5D /* OnlineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataManager.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */,
+				D81F2FC322A5443E007CD129 /* OfflineItemsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				D81F90D9227F1F6C0036DC5D /* APIHelper.swift in Sources */,
 				D886A3A9228F0E94009254C2 /* ItemTableViewCell.m in Sources */,
 				D81F90DE227F29C10036DC5D /* String+PercentEncoding.swift in Sources */,
+				D81F2FC422A5443E007CD129 /* OfflineItemsViewController.swift in Sources */,
 				D81F90D4227F01680036DC5D /* Item.swift in Sources */,
 				D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */,
 				D81F90C8227B7DA60036DC5D /* OnlineItemsViewController.swift in Sources */,

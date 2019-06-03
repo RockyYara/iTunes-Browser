@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TbA-8g-IdT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <!--Online Items View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="OnlineItemsViewController" customModule="iTunes_Browser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Online Items View Controller" customClass="OnlineItemsViewController" customModule="iTunes_Browser" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,14 +37,14 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-4l-pW6">
-                                <rect key="frame" x="0.0" y="139" width="375" height="528"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="BpU-iC-e2p" appends="YES" id="1rn-IP-dvT"/>
                                 </connections>
                             </tableView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-4z-PL8">
-                                <rect key="frame" x="162.5" y="364" width="50" height="78.5"/>
+                                <rect key="frame" x="162.5" y="339.5" width="50" height="78.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kct-de-4Ur">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -61,7 +61,7 @@
                                 </subviews>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-gn-ysm">
-                                <rect key="frame" x="177.5" y="393" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="368.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,6 +86,7 @@
                             <outletCollection property="gestureRecognizers" destination="xdW-Ni-8rN" appends="YES" id="n2h-cO-Xbo"/>
                         </connections>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Online Mode" image="wi-fi" id="0RB-td-Nal"/>
                     <connections>
                         <outlet property="activityIndicator" destination="ppa-gn-ysm" id="IP0-aS-rYN"/>
                         <outlet property="forSearchStringLabel" destination="kq0-91-yBJ" id="oDW-R3-7B3"/>
@@ -108,6 +109,94 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="1071" y="-186"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="r08-qr-lee">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TbA-8g-IdT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7t1-H3-yzf">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="X3Q-70-Xsk"/>
+                        <segue destination="hfJ-m3-TbH" kind="relationship" relationship="viewControllers" id="DSa-9Z-Xgh"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rly-Qp-AqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="133.5832083958021"/>
+        </scene>
+        <!--Offline Items View Controller-->
+        <scene sceneID="ZYW-pV-0VJ">
+            <objects>
+                <viewController id="hfJ-m3-TbH" userLabel="Offline Items View Controller" customClass="OfflineItemsViewController" customModule="iTunes_Browser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KJS-4N-fNo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f5e-kK-J2A">
+                                <rect key="frame" x="127" y="39" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="typeSegmentedControlValueChanged:" destination="hfJ-m3-TbH" eventType="valueChanged" id="K8i-Jr-dTZ"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YkS-qH-dGB">
+                                <rect key="frame" x="0.0" y="75" width="375" height="543"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ss6-3S-WEd">
+                                <rect key="frame" x="46" y="317.5" width="283.5" height="58.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing is available locally" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-2l-ajG">
+                                        <rect key="frame" x="0.0" y="0.0" width="283.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try going to Online Mode" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9M-zT-nou">
+                                        <rect key="frame" x="45.5" y="38" width="192.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="f5e-kK-J2A" firstAttribute="centerX" secondItem="KJS-4N-fNo" secondAttribute="centerX" id="1bQ-Ax-gW0"/>
+                            <constraint firstItem="f5e-kK-J2A" firstAttribute="top" secondItem="Kc8-sw-REx" secondAttribute="top" constant="19" id="KCX-jk-4Nw"/>
+                            <constraint firstItem="Kc8-sw-REx" firstAttribute="bottom" secondItem="YkS-qH-dGB" secondAttribute="bottom" id="O1e-q1-N6N"/>
+                            <constraint firstItem="ss6-3S-WEd" firstAttribute="centerX" secondItem="YkS-qH-dGB" secondAttribute="centerX" id="QDi-iA-CJC"/>
+                            <constraint firstItem="Kc8-sw-REx" firstAttribute="trailing" secondItem="YkS-qH-dGB" secondAttribute="trailing" id="YsE-BG-Sqt"/>
+                            <constraint firstItem="YkS-qH-dGB" firstAttribute="top" secondItem="f5e-kK-J2A" secondAttribute="bottom" constant="8" symbolic="YES" id="h7Q-k8-6DZ"/>
+                            <constraint firstItem="YkS-qH-dGB" firstAttribute="leading" secondItem="Kc8-sw-REx" secondAttribute="leading" id="hoI-X5-Iqa"/>
+                            <constraint firstItem="ss6-3S-WEd" firstAttribute="centerY" secondItem="YkS-qH-dGB" secondAttribute="centerY" id="sj3-MT-5hk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kc8-sw-REx"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Offline Mode" image="checkmark" id="Tjy-S1-Zy4"/>
+                    <connections>
+                        <outlet property="nothingIsAvailableLocallyLabel" destination="hS2-2l-ajG" id="uPF-VU-AJC"/>
+                        <outlet property="nothingIsAvailableLocallyStackView" destination="ss6-3S-WEd" id="wsn-rx-yZc"/>
+                        <outlet property="tableView" destination="YkS-qH-dGB" id="vQP-M6-n0v"/>
+                        <outlet property="typeSegmentedControl" destination="f5e-kK-J2A" id="DvX-C9-KIo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qfy-fS-hlj" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1070" y="585"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark" width="26" height="26"/>
+        <image name="wi-fi" width="26" height="26"/>
+    </resources>
 </document>
