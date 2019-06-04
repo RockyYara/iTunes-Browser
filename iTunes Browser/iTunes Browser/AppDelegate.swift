@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = OnlineDataManager.sharedInstance
         _ = OfflineDataManager.sharedInstance
 
+        // Initialization of main window and initial view controller, which is Tab Bar Controller.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+
         return true
     }
 
