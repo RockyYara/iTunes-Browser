@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class OnlineItemsViewController: UIViewController {
+public class OnlineItemsViewController: UIViewController {
     
     // MARK: - Constants
     
@@ -70,7 +70,7 @@ class OnlineItemsViewController: UIViewController {
     
     // MARK: - View life cycle
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         setUpCurrentItemType()
@@ -180,11 +180,11 @@ class OnlineItemsViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension OnlineItemsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.items.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let genericCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
         guard let cell = genericCell as? ItemTableViewCell else {
@@ -257,11 +257,11 @@ extension OnlineItemsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension OnlineItemsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let item = dataSource?.items[indexPath.row], let offlineItemsManager = offlineItemsManager else {
             return nil
             // We can't save locally anything if there are problems with getting it from data source or if we don't have offlineItemsManager set.
@@ -289,7 +289,7 @@ extension OnlineItemsViewController: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let item = dataSource?.items[indexPath.row], let _ = offlineItemsManager else {
             return UISwipeActionsConfiguration(actions: [])
             // We can't delete anything if there are problems with getting it from data source or if we don't have offlineItemsManager set.
@@ -373,7 +373,7 @@ extension OnlineItemsViewController: UITableViewDelegate {
 // MARK: - UIScrollViewDelegate
 
 extension OnlineItemsViewController: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         resignSearchBarFirstResponderIfEmpty()
     }
 }
@@ -381,15 +381,15 @@ extension OnlineItemsViewController: UIScrollViewDelegate {
 // MARK: - UISearchBarDelegate
 
 extension OnlineItemsViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         
         if let searchBarText = searchBar.text, currentSearchString != searchBarText {
@@ -398,7 +398,7 @@ extension OnlineItemsViewController: UISearchBarDelegate {
         }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         
         searchBar.text = ""

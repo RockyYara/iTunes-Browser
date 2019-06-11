@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc protocol OfflineItemsManager {
+@objc public protocol OfflineItemsManager {
     var items: [Item] { get }
     
     func loadItems(ofType type: String)

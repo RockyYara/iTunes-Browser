@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Item: NSObject {
+public class Item: NSObject {
     
     let type: ItemType
     

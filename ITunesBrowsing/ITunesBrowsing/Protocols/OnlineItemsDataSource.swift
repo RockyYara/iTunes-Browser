@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc protocol OnlineItemsDataSource {
+@objc public protocol OnlineItemsDataSource {
     var items: [Item] { get }
     
     func refreshItems(ofType type: String, withSearchString searchString: String, completionHandler: @escaping (_ success: Bool) -> Void)

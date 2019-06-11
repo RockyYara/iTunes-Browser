@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OfflineItemsViewController: UIViewController {
+public class OfflineItemsViewController: UIViewController {
 
     // MARK: - Constants
     
@@ -43,7 +43,7 @@ class OfflineItemsViewController: UIViewController {
     
     // MARK: - View life cycle
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         setUpCurrentItemType()
@@ -53,7 +53,7 @@ class OfflineItemsViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         refreshItems()
@@ -122,11 +122,11 @@ class OfflineItemsViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension OfflineItemsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return offlineItemsManager?.items.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let genericCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
         guard let cell = genericCell as? ItemTableViewCell else {
@@ -157,7 +157,7 @@ extension OfflineItemsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension OfflineItemsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 }
