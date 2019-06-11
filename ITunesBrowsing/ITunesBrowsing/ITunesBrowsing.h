@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char ITunesBrowsingVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ITunesBrowsing/PublicHeader.h>
 
-
+#import "ItemTableViewCell.h"
