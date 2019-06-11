@@ -8,12 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		D81F71D222A6D6E7009DA6FB /* ITunesBrowsing.h in Headers */ = {isa = PBXBuildFile; fileRef = D81F71D022A6D6E7009DA6FB /* ITunesBrowsing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D81F71DB22A6D72A009DA6FB /* OfflineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F71D922A6D72A009DA6FB /* OfflineItemsViewController.swift */; };
+		D81F71DC22A6D72A009DA6FB /* OnlineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F71DA22A6D72A009DA6FB /* OnlineItemsViewController.swift */; };
+		D81F71E122A6D813009DA6FB /* DownloadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F71DE22A6D813009DA6FB /* DownloadStatus.swift */; };
+		D81F71E222A6D813009DA6FB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F71DF22A6D813009DA6FB /* Item.swift */; };
+		D81F71E322A6D813009DA6FB /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F71E022A6D813009DA6FB /* ItemType.swift */; };
+		D81F722822A6E6A0009DA6FB /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81F722522A6E6A0009DA6FB /* ItemTableViewCell.xib */; };
+		D81F722922A6E6A0009DA6FB /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D81F722622A6E6A0009DA6FB /* ItemTableViewCell.m */; };
+		D81F722A22A6E6A0009DA6FB /* ItemTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D81F722722A6E6A0009DA6FB /* ItemTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D81F722C22A6E754009DA6FB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F722B22A6E754009DA6FB /* Constants.swift */; };
+		D8352BD722A80228005D382F /* OnlineItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8352BD622A80228005D382F /* OnlineItemsDataSource.swift */; };
+		D8352BDA22A8025B005D382F /* OfflineItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8352BD922A8025B005D382F /* OfflineItemsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D81F71CD22A6D6E7009DA6FB /* ITunesBrowsing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ITunesBrowsing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81F71D022A6D6E7009DA6FB /* ITunesBrowsing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITunesBrowsing.h; sourceTree = "<group>"; };
 		D81F71D122A6D6E7009DA6FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D81F71D922A6D72A009DA6FB /* OfflineItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineItemsViewController.swift; sourceTree = "<group>"; };
+		D81F71DA22A6D72A009DA6FB /* OnlineItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineItemsViewController.swift; sourceTree = "<group>"; };
+		D81F71DE22A6D813009DA6FB /* DownloadStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadStatus.swift; sourceTree = "<group>"; };
+		D81F71DF22A6D813009DA6FB /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D81F71E022A6D813009DA6FB /* ItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
+		D81F722522A6E6A0009DA6FB /* ItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
+		D81F722622A6E6A0009DA6FB /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
+		D81F722722A6E6A0009DA6FB /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
+		D81F722B22A6E754009DA6FB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D8352BD622A80228005D382F /* OnlineItemsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineItemsDataSource.swift; sourceTree = "<group>"; };
+		D8352BD922A8025B005D382F /* OfflineItemsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineItemsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +68,53 @@
 		D81F71CF22A6D6E7009DA6FB /* ITunesBrowsing */ = {
 			isa = PBXGroup;
 			children = (
+				D8352BD822A8022D005D382F /* Protocols */,
+				D81F71DD22A6D813009DA6FB /* Model */,
+				D81F722422A6E6A0009DA6FB /* Custom UI Elements */,
+				D81F71D822A6D72A009DA6FB /* View Controllers */,
+				D81F722B22A6E754009DA6FB /* Constants.swift */,
 				D81F71D022A6D6E7009DA6FB /* ITunesBrowsing.h */,
 				D81F71D122A6D6E7009DA6FB /* Info.plist */,
 			);
 			path = ITunesBrowsing;
+			sourceTree = "<group>";
+		};
+		D81F71D822A6D72A009DA6FB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D81F71DA22A6D72A009DA6FB /* OnlineItemsViewController.swift */,
+				D81F71D922A6D72A009DA6FB /* OfflineItemsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D81F71DD22A6D813009DA6FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D81F71DE22A6D813009DA6FB /* DownloadStatus.swift */,
+				D81F71DF22A6D813009DA6FB /* Item.swift */,
+				D81F71E022A6D813009DA6FB /* ItemType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D81F722422A6E6A0009DA6FB /* Custom UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D81F722722A6E6A0009DA6FB /* ItemTableViewCell.h */,
+				D81F722622A6E6A0009DA6FB /* ItemTableViewCell.m */,
+				D81F722522A6E6A0009DA6FB /* ItemTableViewCell.xib */,
+			);
+			path = "Custom UI Elements";
+			sourceTree = "<group>";
+		};
+		D8352BD822A8022D005D382F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D8352BD622A80228005D382F /* OnlineItemsDataSource.swift */,
+				D8352BD922A8025B005D382F /* OfflineItemsManager.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D81F71D222A6D6E7009DA6FB /* ITunesBrowsing.h in Headers */,
+				D81F722A22A6E6A0009DA6FB /* ItemTableViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +161,7 @@
 				TargetAttributes = {
 					D81F71CC22A6D6E7009DA6FB = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -120,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81F722822A6E6A0009DA6FB /* ItemTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +198,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8352BD722A80228005D382F /* OnlineItemsDataSource.swift in Sources */,
+				D81F722922A6E6A0009DA6FB /* ItemTableViewCell.m in Sources */,
+				D81F71E222A6D813009DA6FB /* Item.swift in Sources */,
+				D8352BDA22A8025B005D382F /* OfflineItemsManager.swift in Sources */,
+				D81F71DC22A6D72A009DA6FB /* OnlineItemsViewController.swift in Sources */,
+				D81F71E322A6D813009DA6FB /* ItemType.swift in Sources */,
+				D81F722C22A6E754009DA6FB /* Constants.swift in Sources */,
+				D81F71DB22A6D72A009DA6FB /* OfflineItemsViewController.swift in Sources */,
+				D81F71E122A6D813009DA6FB /* DownloadStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +338,7 @@
 		D81F71D622A6D6E7009DA6FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +356,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaroslavsverdlikov.ITunesBrowsing;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +365,7 @@
 		D81F71D722A6D6E7009DA6FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
