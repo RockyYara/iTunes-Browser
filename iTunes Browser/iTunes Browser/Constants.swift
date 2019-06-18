@@ -10,8 +10,4 @@ import Foundation
 
 struct Constants {
     
-    struct ImageNames {
-        static let noImageAvailable = "no_image_available"
-    }
-
 }
