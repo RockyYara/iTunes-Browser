@@ -49,7 +49,7 @@ public class OfflineItemsViewController: UIViewController {
         setUpCurrentItemType()
         setUpTypeSegmentedControl()
         
-        let cellNib = UINib(nibName: String(describing: ItemTableViewCell.self), bundle: nil)
+        let cellNib = UINib(nibName: String(describing: ItemTableViewCell.self), bundle: Bundle(for: type(of: self)))
         tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
     }
     
@@ -149,7 +149,7 @@ extension OfflineItemsViewController: UITableViewDataSource {
         // We always set alpha to 1, because all offline items are saved locally.
         cell.savedLocallyImageView?.alpha = 1
         
-        let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
+        let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable, in: Bundle(for: type(of: self)), compatibleWith: nil)
         cell.itemImageView?.image = item.image ?? noImageAvailableImage
     }
 }
