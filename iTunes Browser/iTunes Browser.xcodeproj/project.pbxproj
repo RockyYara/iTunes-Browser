@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D81F2FC422A5443E007CD129 /* OfflineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F2FC322A5443E007CD129 /* OfflineItemsViewController.swift */; };
-		D81F90C8227B7DA60036DC5D /* OnlineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */; };
-		D81F90D4227F01680036DC5D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D3227F01680036DC5D /* Item.swift */; };
 		D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D5227F03920036DC5D /* OnlineDataManager.swift */; };
 		D81F90D9227F1F6C0036DC5D /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90D8227F1F6C0036DC5D /* APIHelper.swift */; };
 		D81F90DB227F1F7A0036DC5D /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F90DA227F1F790036DC5D /* ModelParser.swift */; };
@@ -19,19 +16,12 @@
 		D81F9116227F29C50036DC5D /* iTunes_Browser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D81F9114227F29C50036DC5D /* iTunes_Browser.xcdatamodeld */; };
 		D81F9118227F29C50036DC5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81F9117227F29C50036DC5D /* Assets.xcassets */; };
 		D81F911B227F29C50036DC5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81F9119227F29C50036DC5D /* LaunchScreen.storyboard */; };
-		D81F9138228087050036DC5D /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F9137228087050036DC5D /* ItemType.swift */; };
 		D81F98C7229BFD0500C6BD4C /* UIImage+Grayscaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */; };
 		D8233C10228DAB9C00869ADD /* OfflineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */; };
-		D826223C229D60E300B54902 /* DownloadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826223B229D60E300B54902 /* DownloadStatus.swift */; };
-		D886A3A9228F0E94009254C2 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886A3A7228F0E94009254C2 /* ItemTableViewCell.m */; };
-		D886A3AA228F0E94009254C2 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D886A3A8228F0E94009254C2 /* ItemTableViewCell.xib */; };
 		D89C921D2295A520004A396E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89C921C2295A520004A396E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D81F2FC322A5443E007CD129 /* OfflineItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineItemsViewController.swift; sourceTree = "<group>"; };
-		D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineItemsViewController.swift; sourceTree = "<group>"; };
-		D81F90D3227F01680036DC5D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D81F90D5227F03920036DC5D /* OnlineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataManager.swift; sourceTree = "<group>"; };
 		D81F90D8227F1F6C0036DC5D /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		D81F90DA227F1F790036DC5D /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
@@ -43,14 +33,9 @@
 		D81F9117227F29C50036DC5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81F911A227F29C50036DC5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D81F911C227F29C50036DC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D81F9137228087050036DC5D /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscaling.swift"; sourceTree = "<group>"; };
 		D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDataManager.swift; sourceTree = "<group>"; };
-		D826223B229D60E300B54902 /* DownloadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadStatus.swift; sourceTree = "<group>"; };
 		D886A3A5228F0E94009254C2 /* iTunes Browser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTunes Browser-Bridging-Header.h"; sourceTree = "<group>"; };
-		D886A3A6228F0E94009254C2 /* ItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
-		D886A3A7228F0E94009254C2 /* ItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
-		D886A3A8228F0E94009254C2 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		D89C921C2295A520004A396E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,20 +53,8 @@
 		D81F90C9227B7EB10036DC5D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D81F90C7227B7DA60036DC5D /* OnlineItemsViewController.swift */,
-				D81F2FC322A5443E007CD129 /* OfflineItemsViewController.swift */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		D81F90CE227F00C90036DC5D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D81F9137228087050036DC5D /* ItemType.swift */,
-				D81F90D3227F01680036DC5D /* Item.swift */,
-				D826223B229D60E300B54902 /* DownloadStatus.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D81F90D7227F03970036DC5D /* Logic */ = {
@@ -130,11 +103,9 @@
 		D81F910C227F29C50036DC5D /* iTunes Browser */ = {
 			isa = PBXGroup;
 			children = (
-				D81F90CE227F00C90036DC5D /* Model */,
 				D81F90D7227F03970036DC5D /* Logic */,
 				D81F90DC227F1F840036DC5D /* Network Communication */,
 				D81F90DF227F29C50036DC5D /* Extensions */,
-				D886A3A4228F0E0F009254C2 /* Custom UI Elements */,
 				D81F90C9227B7EB10036DC5D /* View Controllers */,
 				D81F910D227F29C50036DC5D /* AppDelegate.swift */,
 				D89C921C2295A520004A396E /* Constants.swift */,
@@ -148,14 +119,9 @@
 			path = "iTunes Browser";
 			sourceTree = "<group>";
 		};
-		D886A3A4228F0E0F009254C2 /* Custom UI Elements */ = {
 			isa = PBXGroup;
 			children = (
-				D886A3A6228F0E94009254C2 /* ItemTableViewCell.h */,
-				D886A3A7228F0E94009254C2 /* ItemTableViewCell.m */,
-				D886A3A8228F0E94009254C2 /* ItemTableViewCell.xib */,
 			);
-			path = "Custom UI Elements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +186,6 @@
 				D81F911B227F29C50036DC5D /* LaunchScreen.storyboard in Resources */,
 				D81F9118227F29C50036DC5D /* Assets.xcassets in Resources */,
 				D81F9113227F29C50036DC5D /* Main.storyboard in Resources */,
-				D886A3AA228F0E94009254C2 /* ItemTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,18 +199,12 @@
 				D81F9116227F29C50036DC5D /* iTunes_Browser.xcdatamodeld in Sources */,
 				D81F910E227F29C50036DC5D /* AppDelegate.swift in Sources */,
 				D8233C10228DAB9C00869ADD /* OfflineDataManager.swift in Sources */,
-				D81F9138228087050036DC5D /* ItemType.swift in Sources */,
 				D81F90D9227F1F6C0036DC5D /* APIHelper.swift in Sources */,
-				D886A3A9228F0E94009254C2 /* ItemTableViewCell.m in Sources */,
 				D81F90DE227F29C10036DC5D /* String+PercentEncoding.swift in Sources */,
-				D81F2FC422A5443E007CD129 /* OfflineItemsViewController.swift in Sources */,
-				D81F90D4227F01680036DC5D /* Item.swift in Sources */,
 				D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */,
-				D81F90C8227B7DA60036DC5D /* OnlineItemsViewController.swift in Sources */,
 				D81F90DB227F1F7A0036DC5D /* ModelParser.swift in Sources */,
 				D89C921D2295A520004A396E /* Constants.swift in Sources */,
 				D81F98C7229BFD0500C6BD4C /* UIImage+Grayscaling.swift in Sources */,
-				D826223C229D60E300B54902 /* DownloadStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
