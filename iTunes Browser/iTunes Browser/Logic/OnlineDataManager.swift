@@ -18,7 +18,7 @@ class OnlineDataManager {
     
     private(set) var items = [Item]()
 
-    func refreshItems(of type: ItemType, with searchString: String, completionHandler: @escaping (Bool) -> Void) {
+    private func refreshItems(of type: ItemType, with searchString: String, completionHandler: @escaping (Bool) -> Void) {
         apiHelper.searchItems(of: type.rawValue, with: searchString) { [weak self] resultDict in
             guard let dict = resultDict else {
                 completionHandler(false)
@@ -85,5 +85,15 @@ class OnlineDataManager {
             // But if a class doesn't do this check on its own, we should execute completion closure.
             completionHandler(true)
         }
+    }
+}
+
+extension OnlineDataManager: OnlineItemsDataSource {
+    func refreshItems(ofType type: String, withSearchString searchString: String, completionHandler: @escaping (Bool) -> Void) {
+        guard let itemType = ItemType(rawValue: type) else {
+            fatalError("Incorrect ItemType \(type)")
+        }
+
+        refreshItems(of: itemType, with: searchString, completionHandler: completionHandler)
     }
 }
