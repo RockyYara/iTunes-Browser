@@ -149,7 +149,7 @@ extension OfflineItemsViewController: UITableViewDataSource {
         // We always set alpha to 1, because all offline items are saved locally.
         cell.savedLocallyImageView?.alpha = 1
         
-        let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable, in: Bundle(for: type(of: self)), compatibleWith: nil)
+        let noImageAvailableImage = UIImage(named: ITBConstants.ImageNames.noImageAvailable, in: Bundle(for: type(of: self)), compatibleWith: nil)
         cell.itemImageView?.image = item.image ?? noImageAvailableImage
     }
 }

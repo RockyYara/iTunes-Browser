@@ -230,7 +230,7 @@ extension OnlineItemsViewController: UITableViewDataSource {
                 let items = dataSource.items
                 
                 if items.count > indexPath.row && items[indexPath.row] === item {
-                    let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable, in: Bundle(for: OnlineItemsViewController.self), compatibleWith: nil)
+                    let noImageAvailableImage = UIImage(named: ITBConstants.ImageNames.noImageAvailable, in: Bundle(for: OnlineItemsViewController.self), compatibleWith: nil)
                     // It's perfectly legal to initialize new UIImage not on the main thread, because no actual UI is being accessed during image initialization.
                     // After that we definitely have to switch to the main thread.
 

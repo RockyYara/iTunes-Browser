@@ -8,8 +8,10 @@
 
 import Foundation
 
-struct Constants {
+public struct ITBConstants {
     
+    public static let storyboardName = "View Controllers"
+
     struct ImageNames {
         static let noImageAvailable = "no_image_available"
     }
