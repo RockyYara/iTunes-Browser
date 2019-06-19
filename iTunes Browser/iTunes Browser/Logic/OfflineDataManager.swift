@@ -43,7 +43,7 @@ class OfflineDataManager {
     
     // MARK: - Data Access
     
-    func offlineItem(of type: ItemType, with trackId: Int) -> OfflineItem? {
+    private func offlineItem(of type: ItemType, with trackId: Int) -> OfflineItem? {
         let fetchRequest = NSFetchRequest<OfflineItem>(entityName: "OfflineItem")
         fetchRequest.predicate = NSPredicate(format: "type = %@ AND trackId = %@", argumentArray: [type.rawValue, trackId])
         
@@ -51,20 +51,6 @@ class OfflineDataManager {
             return results[0]
         } else {
             return nil
-        }
-    }
-    
-    func loadItems(of type: ItemType) {
-        // Here I use "map" function to transform array of OfflineItems to array of Items.
-        
-        items = offlineItems(of: type).map {
-            let item = Item(type: type, trackId: Int($0.trackId), trackName: $0.trackName ?? "", artistName: $0.artistName ?? "", artworkUrl60: nil)
-            
-            if let imageData = $0.image {
-                item.image = UIImage(data: imageData)
-            }
-            
-            return item
         }
     }
     
@@ -105,7 +91,7 @@ class OfflineDataManager {
         saveData()
     }
     
-    func deleteOfflineItem(_ offlineItem: OfflineItem) {
+    private func deleteOfflineItem(_ offlineItem: OfflineItem) {
         context.delete(offlineItem)
 
         print("Deleted")
@@ -114,4 +100,36 @@ class OfflineDataManager {
         saveData()
     }
     
+}
+
+extension OfflineDataManager: OfflineItemsManager {
+    func loadItems(ofType type: String) {
+        guard let itemType = ItemType(rawValue: type) else {
+            fatalError("Incorrect ItemType \(type)")
+        }
+        
+        // Here I use "map" function to transform array of OfflineItems to array of Items.
+        
+        items = offlineItems(of: itemType).map {
+            return Item(offlineItem: $0)
+        }
+    }
+    
+    func item(ofType type: String, withTrackId trackId: Int) -> Item? {
+        guard let itemType = ItemType(rawValue: type) else {
+            fatalError("Incorrect ItemType \(type)")
+        }
+        
+        if let offlineItem = offlineItem(of: itemType, with: trackId) {
+            return Item(offlineItem: offlineItem)
+        } else {
+            return nil
+        }
+    }
+
+    func deleteItem(_ item: Item) {
+        if let existingItem = offlineItem(of: item.type, with: item.trackId) {
+            deleteOfflineItem(existingItem)
+        }
+    }
 }
