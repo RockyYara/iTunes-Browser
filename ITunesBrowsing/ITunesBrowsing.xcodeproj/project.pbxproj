@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		D82A830722BA468000121799 /* ITunesBrowsing-fat */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D82A830A22BA468000121799 /* Build configuration list for PBXAggregateTarget "ITunesBrowsing-fat" */;
+			buildPhases = (
+				D82A830B22BA469B00121799 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "ITunesBrowsing-fat";
+			productName = "ITunesBrowsing-fat";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		D81F71D222A6D6E7009DA6FB /* ITunesBrowsing.h in Headers */ = {isa = PBXBuildFile; fileRef = D81F71D022A6D6E7009DA6FB /* ITunesBrowsing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D81F71DB22A6D72A009DA6FB /* OfflineItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F71D922A6D72A009DA6FB /* OfflineItemsViewController.swift */; };
@@ -40,6 +54,7 @@
 		D82A82F722B9189F00121799 /* View Controllers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "View Controllers.storyboard"; sourceTree = "<group>"; };
 		D82A82F922B91B2400121799 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		D82A82FB22B92A0100121799 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alert.mp3; sourceTree = "<group>"; };
+		D82A830C22BA4ADB00121799 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
 		D8352BD622A80228005D382F /* OnlineItemsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineItemsDataSource.swift; sourceTree = "<group>"; };
 		D8352BD922A8025B005D382F /* OfflineItemsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineItemsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				D81F71CF22A6D6E7009DA6FB /* ITunesBrowsing */,
+				D82A830C22BA4ADB00121799 /* build.sh */,
 				D81F71CE22A6D6E7009DA6FB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -172,6 +188,9 @@
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
 					};
+					D82A830722BA468000121799 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 				};
 			};
 			buildConfigurationList = D81F71C722A6D6E6009DA6FB /* Build configuration list for PBXProject "ITunesBrowsing" */;
@@ -187,6 +206,7 @@
 			projectRoot = "";
 			targets = (
 				D81F71CC22A6D6E7009DA6FB /* ITunesBrowsing */,
+				D82A830722BA468000121799 /* ITunesBrowsing-fat */,
 			);
 		};
 /* End PBXProject section */
@@ -204,6 +224,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D82A830B22BA469B00121799 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${SRCROOT}/build.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D81F71C922A6D6E7009DA6FB /* Sources */ = {
@@ -402,6 +442,24 @@
 			};
 			name = Release;
 		};
+		D82A830822BA468000121799 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y3A5Y7R3W5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D82A830922BA468000121799 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y3A5Y7R3W5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -419,6 +477,15 @@
 			buildConfigurations = (
 				D81F71D622A6D6E7009DA6FB /* Debug */,
 				D81F71D722A6D6E7009DA6FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D82A830A22BA468000121799 /* Build configuration list for PBXAggregateTarget "ITunesBrowsing-fat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D82A830822BA468000121799 /* Debug */,
+				D82A830922BA468000121799 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
