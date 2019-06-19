@@ -18,8 +18,24 @@
 		D81F911B227F29C50036DC5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81F9119227F29C50036DC5D /* LaunchScreen.storyboard */; };
 		D81F98C7229BFD0500C6BD4C /* UIImage+Grayscaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */; };
 		D8233C10228DAB9C00869ADD /* OfflineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */; };
+		D82A830222B9345600121799 /* ITunesBrowsing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82A82FE22B92BF100121799 /* ITunesBrowsing.framework */; };
+		D82A830322B9345600121799 /* ITunesBrowsing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82A82FE22B92BF100121799 /* ITunesBrowsing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D89C921D2295A520004A396E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89C921C2295A520004A396E /* Constants.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D82A830422B9345600121799 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D82A830322B9345600121799 /* ITunesBrowsing.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D81F90D5227F03920036DC5D /* OnlineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataManager.swift; sourceTree = "<group>"; };
@@ -35,6 +51,7 @@
 		D81F911C227F29C50036DC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscaling.swift"; sourceTree = "<group>"; };
 		D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDataManager.swift; sourceTree = "<group>"; };
+		D82A82FE22B92BF100121799 /* ITunesBrowsing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ITunesBrowsing.framework; sourceTree = "<group>"; };
 		D886A3A5228F0E94009254C2 /* iTunes Browser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTunes Browser-Bridging-Header.h"; sourceTree = "<group>"; };
 		D89C921C2295A520004A396E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -44,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82A830222B9345600121799 /* ITunesBrowsing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +107,7 @@
 			children = (
 				D81F910C227F29C50036DC5D /* iTunes Browser */,
 				D81F910B227F29C50036DC5D /* Products */,
+				D82A82FD22B92BB700121799 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,9 +138,12 @@
 			path = "iTunes Browser";
 			sourceTree = "<group>";
 		};
+		D82A82FD22B92BB700121799 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D82A82FE22B92BF100121799 /* ITunesBrowsing.framework */,
 			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +156,7 @@
 				D81F9106227F29C50036DC5D /* Sources */,
 				D81F9107227F29C50036DC5D /* Frameworks */,
 				D81F9108227F29C50036DC5D /* Resources */,
+				D82A830422B9345600121799 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,6 +376,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3A5Y7R3W5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = "iTunes Browser/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -375,6 +402,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3A5Y7R3W5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = "iTunes Browser/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

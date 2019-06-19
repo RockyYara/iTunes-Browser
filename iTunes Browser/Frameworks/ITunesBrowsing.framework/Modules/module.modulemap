@@ -1,0 +1,11 @@
+framework module ITunesBrowsing {
+  umbrella header "ITunesBrowsing.h"
+
+  export *
+  module * { export * }
+}
+
+module ITunesBrowsing.Swift {
+    header "ITunesBrowsing-Swift.h"
+    requires objc
+}
