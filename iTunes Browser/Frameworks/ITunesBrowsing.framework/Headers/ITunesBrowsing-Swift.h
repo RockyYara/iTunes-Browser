@@ -168,6 +168,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -238,12 +239,14 @@ SWIFT_PROTOCOL("_TtP14ITunesBrowsing21OnlineItemsDataSource_")
 - (void)downloadImageFor:(Item * _Nonnull)item completionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
 @end
 
+@protocol UIViewControllerTransitionCoordinator;
 
 SWIFT_CLASS("_TtC14ITunesBrowsing25OnlineItemsViewController")
 @interface OnlineItemsViewController : UIViewController
 @property (nonatomic, weak) IBOutlet id <OnlineItemsDataSource> _Nullable dataSource;
 @property (nonatomic, weak) IBOutlet id <OfflineItemsManager> _Nullable offlineItemsManager;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -451,6 +454,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -521,12 +525,14 @@ SWIFT_PROTOCOL("_TtP14ITunesBrowsing21OnlineItemsDataSource_")
 - (void)downloadImageFor:(Item * _Nonnull)item completionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
 @end
 
+@protocol UIViewControllerTransitionCoordinator;
 
 SWIFT_CLASS("_TtC14ITunesBrowsing25OnlineItemsViewController")
 @interface OnlineItemsViewController : UIViewController
 @property (nonatomic, weak) IBOutlet id <OnlineItemsDataSource> _Nullable dataSource;
 @property (nonatomic, weak) IBOutlet id <OfflineItemsManager> _Nullable offlineItemsManager;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
