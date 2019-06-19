@@ -18,6 +18,7 @@
 		D81F911B227F29C50036DC5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81F9119227F29C50036DC5D /* LaunchScreen.storyboard */; };
 		D81F98C7229BFD0500C6BD4C /* UIImage+Grayscaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */; };
 		D8233C10228DAB9C00869ADD /* OfflineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */; };
+		D82A830122B930B800121799 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82A830022B930B800121799 /* MainViewController.swift */; };
 		D82A830222B9345600121799 /* ITunesBrowsing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82A82FE22B92BF100121799 /* ITunesBrowsing.framework */; };
 		D82A830322B9345600121799 /* ITunesBrowsing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82A82FE22B92BF100121799 /* ITunesBrowsing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D89C921D2295A520004A396E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89C921C2295A520004A396E /* Constants.swift */; };
@@ -52,6 +53,7 @@
 		D81F98C6229BFD0500C6BD4C /* UIImage+Grayscaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscaling.swift"; sourceTree = "<group>"; };
 		D8233C0F228DAB9C00869ADD /* OfflineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDataManager.swift; sourceTree = "<group>"; };
 		D82A82FE22B92BF100121799 /* ITunesBrowsing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ITunesBrowsing.framework; sourceTree = "<group>"; };
+		D82A830022B930B800121799 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D886A3A5228F0E94009254C2 /* iTunes Browser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTunes Browser-Bridging-Header.h"; sourceTree = "<group>"; };
 		D89C921C2295A520004A396E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 		D81F90C9227B7EB10036DC5D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D82A830022B930B800121799 /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				D8233C10228DAB9C00869ADD /* OfflineDataManager.swift in Sources */,
 				D81F90D9227F1F6C0036DC5D /* APIHelper.swift in Sources */,
 				D81F90DE227F29C10036DC5D /* String+PercentEncoding.swift in Sources */,
+				D82A830122B930B800121799 /* MainViewController.swift in Sources */,
 				D81F90D6227F03920036DC5D /* OnlineDataManager.swift in Sources */,
 				D81F90DB227F1F7A0036DC5D /* ModelParser.swift in Sources */,
 				D89C921D2295A520004A396E /* Constants.swift in Sources */,
