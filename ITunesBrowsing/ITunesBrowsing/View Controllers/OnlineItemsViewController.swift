@@ -83,6 +83,22 @@ public class OnlineItemsViewController: UIViewController {
         refreshItems()
     }
     
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        if presentedViewController != nil {
+            // I dismiss alert if it is presented and reload data in the table view to make it display cells correctly.
+            
+            dismiss(animated: true) { [weak self] in
+                self?.tableView.reloadData()
+            }
+        } else {
+            // I only disable editing mode if no alert is presented.
+            
+            tableView.setEditing(false, animated: true)
+        }
+    }
+    
     // MARK: - Actions
 
     @IBAction private func typeSegmentedControlValueChanged(_ sender: UISegmentedControl) {
