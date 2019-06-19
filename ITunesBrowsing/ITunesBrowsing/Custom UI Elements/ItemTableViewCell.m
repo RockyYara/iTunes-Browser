@@ -25,7 +25,7 @@
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        UIImage *templateImage = [UIImage imageNamed:@"checkmark"];
+        UIImage *templateImage = [UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self] compatibleWithTraitCollection:nil];
         image = [templateImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         // Here we create template image, this will allow it to be colored to tint color of UIImageView it will be displayed in.

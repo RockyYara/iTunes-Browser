@@ -77,7 +77,7 @@ public class OnlineItemsViewController: UIViewController {
         setUpTypeSegmentedControl()
         setUpSearch()
         
-        let cellNib = UINib(nibName: String(describing: ItemTableViewCell.self), bundle: nil)
+        let cellNib = UINib(nibName: String(describing: ItemTableViewCell.self), bundle: Bundle(for: type(of: self)))
         tableView.register(cellNib, forCellReuseIdentifier: cellReuseIdentifier)
 
         refreshItems()
@@ -230,7 +230,7 @@ extension OnlineItemsViewController: UITableViewDataSource {
                 let items = dataSource.items
                 
                 if items.count > indexPath.row && items[indexPath.row] === item {
-                    let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable)
+                    let noImageAvailableImage = UIImage(named: Constants.ImageNames.noImageAvailable, in: Bundle(for: OnlineItemsViewController.self), compatibleWith: nil)
                     // It's perfectly legal to initialize new UIImage not on the main thread, because no actual UI is being accessed during image initialization.
                     // After that we definitely have to switch to the main thread.
 
@@ -361,7 +361,7 @@ extension OnlineItemsViewController: UITableViewDelegate {
     }
     
     private func playAlertSound() {
-        if let url = Bundle.main.url(forResource: "alert", withExtension: "mp3") {
+        if let url = Bundle(for: type(of: self)).url(forResource: "alert", withExtension: "mp3") {
             if let _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback), let _ = try? AVAudioSession.sharedInstance().setActive(true) {
                 audioPlayer = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
                 audioPlayer?.play()
